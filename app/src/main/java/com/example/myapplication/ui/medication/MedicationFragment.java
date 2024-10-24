@@ -12,14 +12,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.databinding.FragmentHomeBinding;
 
-public class medicationFragment extends Fragment {
+public class MedicationFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        medicationViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(medicationViewModel.class);
+        MedicationViewModel dashboardViewModel =
+                new ViewModelProvider(this).get(MedicationViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
