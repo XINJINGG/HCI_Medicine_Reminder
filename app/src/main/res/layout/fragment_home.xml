@@ -6,17 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <!-- Greeting Banner -->
     <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/greetingBanner"
+        android:layout_width="243dp"
+        android:layout_height="147dp"
+        android:gravity="center"
+        android:textSize="48sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Date -->
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monday 14 Oct 2024"
+        app:layout_constraintTop_toBottomOf="@id/greetingBanner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"/>
+
+    <!-- Medicine of the Day Header -->
+    <TextView
+        android:id="@+id/medicineOfDayHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MEDICINE OF THE DAY"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/dateText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"/>
+
+    <!-- Medicine List (RecyclerView for dynamic items) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/medicineList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/medicineOfDayHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Missed Medication Header -->
+    <TextView
+        android:id="@+id/missedMedicationHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MISSED MEDICATION"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/medicineList"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:layout_marginTop="24dp"/>
+
+    <!-- Missed Medication List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/missedMedicineList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/missedMedicationHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
