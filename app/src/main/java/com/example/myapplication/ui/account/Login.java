@@ -80,6 +80,6 @@ public class Login extends AppCompatActivity {
 
     private boolean validateCredentials(String username, String password) {
 
-        return username.equals("user123@gmail.com") && password.equals("user123");
+        return username.equals("JohnTan@gmail.com") && password.equals("johnPass");
     }
 }
