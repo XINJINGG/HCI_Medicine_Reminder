@@ -4,36 +4,32 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
+import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
-import com.example.myapplication.databinding.FragmentProfileBinding;
+import androidx.navigation.fragment.NavHostFragment;
+import com.example.myapplication.R;
 
 public class ProfileFragment extends Fragment {
-    private FragmentProfileBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ProfileViewModel profileViewModel =
-                new ViewModelProvider(this).get(ProfileViewModel.class);
+        // Inflate the layout directly
+        View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        // Use the correct binding class for the profile fragment
-        binding = FragmentProfileBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        // Find the button using findViewById
+        Button editProfileButton = root.findViewById(R.id.buttonEdit);
 
-        // Update the TextView using the ProfileViewModel
-        final TextView textView = binding.textProfile; // Assuming there's a TextView with ID textProfile in fragment_profile.xml
-        profileViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        // Set an OnClickListener to navigate to EditProfileFragment
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(ProfileFragment.this)
+                        .navigate(R.id.action_profileFragment_to_editProfileFragment);
+            }
+        });
+
         return root;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
     }
 }

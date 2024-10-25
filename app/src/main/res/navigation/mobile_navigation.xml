@@ -31,6 +31,16 @@
         android:id="@+id/navigation_profile"
         android:name="com.example.myapplication.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+    <action
+        android:id="@+id/action_profileFragment_to_editProfileFragment"
+        app:destination="@id/navigation_editprofile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_editprofile"
+        android:name="com.example.myapplication.ui.profile.EditProfileFragment"
+        android:label="EditProfile"
+        tools:layout="@layout/fragment_editprofile" />
 
 </navigation>
