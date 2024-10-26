@@ -33,7 +33,7 @@ public class MedicationFragment extends Fragment {
         View root = binding.getRoot();
 
         medicationTrackerBtn = root.findViewById(R.id.medicationTrackerButton);
-        // Set an OnClickListener to navigate to EditProfileFragment
+        // Set an OnClickListener to navigate to medicineTrackerFragment
         medicationTrackerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
