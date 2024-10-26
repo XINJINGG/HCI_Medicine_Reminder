@@ -5,4 +5,12 @@
     <string name="title_alarms">Alarms</string>
     <string name="title_rewards">Rewards</string>
     <string name="title_profile">Profile</string>
+
+    <!--array for alarm timing-->
+    <string-array name="timing_options">
+        <item>8:00 AM</item>
+        <item>13:00 PM</item>
+        <item>18:00 PM</item>
+    </string-array>
+
 </resources>
