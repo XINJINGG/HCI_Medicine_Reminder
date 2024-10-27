@@ -49,19 +49,20 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/alarmMedicineName"
+                    android:id="@+id/alarmName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Prospan Cough Syrup"
+                    android:text="Cough"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/alarmDesc"
+                    android:id="@+id/alarmMedicineName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cough"
-                    android:textSize="14sp" />
+                    android:text="Prospan Cough Syrup"
+                    android:textSize="14sp"
+                />
 
                 <TextView
                     android:id="@+id/alarmDosagenFrequency"
@@ -138,19 +139,22 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/alarmName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diabetes"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <TextView
                     android:id="@+id/alarmMedicineName2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Metformin"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp"
+                />
 
-                <TextView
-                    android:id="@+id/alarmDesc2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Diabetes Type 2"
-                    android:textSize="14sp" />
+
 
                 <TextView
                     android:id="@+id/alarmDosagenFrequency2"
@@ -219,7 +223,8 @@
             android:orientation="horizontal"
             android:padding="12dp"
             android:layout_marginTop="20dp"
-            android:visibility="gone">
+            android:visibility="gone"
+        >
 
             <ImageView
                 android:id="@+id/alarmMedicineImage3"
@@ -236,19 +241,21 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/alarmName3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dementia"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
                     android:id="@+id/alarmMedicineName3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Donepezil"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/alarmDesc3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dementia"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                />
 
                 <TextView
                     android:id="@+id/alarmDosagenFrequency3"
