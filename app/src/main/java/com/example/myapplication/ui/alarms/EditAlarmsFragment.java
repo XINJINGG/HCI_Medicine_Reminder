@@ -60,8 +60,33 @@ public class EditAlarmsFragment extends Fragment {
             }
         });
 
-        // delete button logic
+        // delete timing button logic
         deleteTimingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create the AlertDialog
+                new AlertDialog.Builder(requireContext())
+                        .setTitle("Confirm Deletion")
+                        .setMessage("Are you sure you want to delete this timing?")
+                        .setPositiveButton("Yes", (dialog, which) -> {
+                            // Navigate to AlarmsFragment on confirmation
+
+                            NavHostFragment.findNavController(EditAlarmsFragment.this)
+                                    .navigate(R.id.toAlarmFragment);
+
+                            AlarmsViewModel viewModel = new ViewModelProvider(requireActivity()).get(AlarmsViewModel.class);
+                            viewModel.setAlarmTimingDeleted(true);
+                        })
+                        .setNegativeButton("No", (dialog, which) -> {
+                            // Close the dialog without any action
+                            dialog.dismiss();
+                        })
+                        .show();
+            }
+        });
+
+        // delete button logic
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create the AlertDialog

@@ -19,18 +19,30 @@
         <action
             android:id="@+id/toEditAlarmFragment"
             app:destination="@id/navigation_editalarm" />
+        <action
+            android:id="@+id/toAddAlarmFragment"
+            app:destination="@id/navigation_addalarm" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_editalarm"
         android:name="com.example.myapplication.ui.alarms.EditAlarmsFragment"
-        android:label="EditAlarm"
+        android:label="Edit Alarm"
         tools:layout="@layout/fragment_edit_alarms">
         <action
             android:id="@+id/toAlarmFragment"
             app:destination="@id/navigation_alarm" />
     </fragment>
 
+    <fragment
+        android:id="@+id/navigation_addalarm"
+        android:name="com.example.myapplication.ui.alarms.AddAlarmsFragment"
+        android:label="Add Alarm"
+        tools:layout="@layout/fragment_addalarm">
+        <action
+            android:id="@+id/toAlarmFragment"
+            app:destination="@id/navigation_alarm" />
+    </fragment>
 
 
     <fragment

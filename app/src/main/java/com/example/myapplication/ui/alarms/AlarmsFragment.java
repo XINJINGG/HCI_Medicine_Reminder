@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,9 @@ public class AlarmsFragment extends Fragment {
     private TextView metforminAlarmTime;
     private ImageView rightArrowIcon;
     private AlarmsViewModel viewModel;
+    private Button addAlarmBtn;
+    private LinearLayout prospanLayout;
+    private LinearLayout donepezilLayout;
 
     @Nullable
     @Override
@@ -44,16 +48,27 @@ public class AlarmsFragment extends Fragment {
         coughAlarmTime = rootView.findViewById(R.id.coughsyrupAlarmTime1);
         coughAlarmTime2 = rootView.findViewById(R.id.coughsyrupAlarmTime2);
         metforminAlarmTime = rootView.findViewById(R.id.metforminAlarmTime1);
-        rightArrowIcon = rootView.findViewById(R.id.rightArrowIcon); // Make sure to initialize the button
+        rightArrowIcon = rootView.findViewById(R.id.rightArrowIcon);
+        addAlarmBtn = rootView.findViewById(R.id.addAlarmButton);
+        donepezilLayout = rootView.findViewById(R.id.donepezilLayout);
+        prospanLayout = rootView.findViewById(R.id.prospanLayout);
 
         // get shared view model
         viewModel = new ViewModelProvider(requireActivity()).get(AlarmsViewModel.class);
 
         // delete timing ui
-        viewModel.getIsAlarmDeleted().observe(getViewLifecycleOwner(), isDeleted -> {
+        viewModel.getIsAlarmTimingDeleted().observe(getViewLifecycleOwner(), isDeleted -> {
             // if status is deleted, then make the timing invisible
             if (isDeleted) {
                 coughAlarmTime.setVisibility(View.GONE);
+            }
+        });
+
+        // delete alarm ui
+        viewModel.getIsAlarmDeleted().observe(getViewLifecycleOwner(), isDeleted -> {
+            // if status is deleted, then make the timing invisible
+            if (isDeleted) {
+                prospanLayout.setVisibility(View.GONE);
             }
         });
 
@@ -65,12 +80,28 @@ public class AlarmsFragment extends Fragment {
             }
         });
 
+        // add timing ui
+        viewModel.getIsAlarmAdded().observe(getViewLifecycleOwner(), isAdded -> {
+            // if status is deleted, then make the timing invisible
+            if (isAdded) {
+                donepezilLayout.setVisibility(View.VISIBLE);
+            }
+        });
+
         // Set up the click listener for the right arrow icon
         rightArrowIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavHostFragment.findNavController(AlarmsFragment.this)
                         .navigate(R.id.toEditAlarmFragment);
+            }
+        });
+
+        addAlarmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(AlarmsFragment.this)
+                        .navigate(R.id.toAddAlarmFragment);
             }
         });
 

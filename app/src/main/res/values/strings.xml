@@ -13,4 +13,10 @@
         <item>18:00 PM</item>
     </string-array>
 
+    <!--array for medicine selection-->
+    <string-array name="medicine_options">
+        <item>Donepezil</item>
+        <item>Omeprazole</item>
+    </string-array>
+
 </resources>
