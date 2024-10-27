@@ -40,7 +40,7 @@
             android:text="Select Timing:"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="10dp"/>
 
         <Spinner
             android:id="@+id/timing_spinner"
@@ -49,11 +49,21 @@
             android:layout_marginTop="8dp"
             android:spinnerMode="dropdown" />
 
+        <Button
+            android:id="@+id/deleteTimingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Delete Timing"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
         <!--SET ALARM TIMING LAYOUT-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:text="Set Timing:"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -68,7 +78,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="09"
+                android:text="14"
                 android:textColor="@color/black"
                 android:textSize="40pt" />
 
@@ -96,20 +106,22 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="#D3D3D3"
+                    android:background="@android:color/white"
                     android:gravity="center"
                     android:text="AM"
-                    android:textColor="@color/black"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@android:color/white"
+                    android:background="#D3D3D3"
                     android:gravity="center"
                     android:text="PM"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/black"
                     android:textSize="18sp" />
+
+
             </LinearLayout>
         </LinearLayout>
 
@@ -117,7 +129,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:text="Set Day: "
             android:textSize="20sp"
             android:textStyle="bold" />
