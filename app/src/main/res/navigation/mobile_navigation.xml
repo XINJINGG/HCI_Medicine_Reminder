@@ -49,7 +49,18 @@
         android:id="@+id/navigation_medication"
         android:name="com.example.myapplication.ui.medication.MedicationFragment"
         android:label="@string/title_medication"
-        tools:layout="@layout/fragment_medication" />
+        tools:layout="@layout/fragment_medication">
+        <action
+            android:id="@+id/action_medicationFragment_to_addMedicationFragment"
+            app:destination="@id/addMedicationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addMedicationFragment"
+        android:name="com.example.myapplication.ui.medication.AddMedicationFragment"
+        android:label="title_add_medication"
+        tools:layout="@layout/fragment_add_medication" />
+
     <fragment
         android:id="@+id/navigation_rewards"
         android:name="com.example.myapplication.ui.rewards.RewardsFragment"
