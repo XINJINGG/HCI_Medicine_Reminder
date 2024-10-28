@@ -23,8 +23,6 @@ public class ProfileFragment extends Fragment {
 
         // Find the edit profile button using findViewById
         Button editProfileButton = root.findViewById(R.id.buttonEdit);
-        Button logoutButton = root.findViewById(R.id.buttonLogout); // Add this line
-
         // Set an OnClickListener to navigate to EditProfileFragment
         editProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,24 +30,32 @@ public class ProfileFragment extends Fragment {
                 NavHostFragment.findNavController(ProfileFragment.this)
                         .navigate(R.id.action_profileFragment_to_editProfileFragment);
             }
+
+
         });
 
-        // Set an OnClickListener to handle logout
+        // Handle Logout button
+        Button logoutButton = root.findViewById(R.id.buttonLogout);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Clear login status from SharedPreferences
-                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPreferences", getContext().MODE_PRIVATE);
+                // Clear login status
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPreferences", getActivity().MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("isLoggedIn", false);
                 editor.apply();
 
-                // Redirect to LoginActivity
+                // Start the Login Activity and clear the back stack so the user cannot return
                 Intent intent = new Intent(getActivity(), Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-                getActivity().finish(); // Close the current activity
+
+                // Optionally, close the fragment's parent activity (if needed)
+                getActivity().finish();
             }
         });
+
+
 
         return root;
     }
