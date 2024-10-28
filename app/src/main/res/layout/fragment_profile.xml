@@ -14,6 +14,7 @@
         android:layout_marginTop="16dp"
         android:text="Name: John Tan"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +27,8 @@
         android:text="Email: JohnTan@gmail.com"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewName"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textViewDob"
@@ -37,7 +39,8 @@
         android:text="D.O.B: 10/03/2000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmail"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/buttonLogout"
