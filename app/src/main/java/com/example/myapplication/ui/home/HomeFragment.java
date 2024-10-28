@@ -46,11 +46,12 @@ public class HomeFragment extends Fragment {
 
         // Sample data for the medicine list
         medicineList = new ArrayList<>();
-        medicineList.add(new Medicine("Medicine A", "Purpose A",
-                R.drawable.baseline_account_circle_24, "1 hr", "Pharmacy A"));
-        medicineList.add(new Medicine("Medicine B", "Purpose B",
-                R.drawable.ic_baseline_medication_24, "30 min","Pharmacy B"));
-        // Add more medicines as needed...
+        medicineList.add(new Medicine("Amlodipine", "Blood pressure control",
+                R.drawable.ic_baseline_medication_24, "1 hr",
+                "Woodland Watson", 70));
+        medicineList.add(new Medicine("Atorvastatin", "Cholesterol management",
+                R.drawable.ic_baseline_medication_24, "2 hrs",
+                "Woodland Watson",80));
 
         medicineAdapter = new MedicineAdapter(getContext(), medicineList);
         medicineRecyclerView.setAdapter(medicineAdapter);
@@ -60,11 +61,10 @@ public class HomeFragment extends Fragment {
 
         // Sample data for the missed medication list
         missedMedicineList = new ArrayList<>();
-        missedMedicineList.add(new Medicine("Missed Medicine A", "Purpose A",
-                R.drawable.baseline_account_circle_24, "2 hrs ago","Pharmacy C"));
-        missedMedicineList.add(new Medicine("Missed Medicine B", "Purpose B",
-                R.drawable.ic_baseline_medication_24, "1 hr ago","Pharmacy D"));
-        // Add more missed medicines as needed...
+        missedMedicineList.add(new Medicine("Metformin", "Diabetes management",
+                R.drawable.ic_baseline_medication_24, "1 hr ago",
+                "Woodland Watson",20));
+
 
         missedMedicineAdapter = new MedicineAdapter(getContext(), missedMedicineList);
         missedMedicineRecyclerView.setAdapter(missedMedicineAdapter);

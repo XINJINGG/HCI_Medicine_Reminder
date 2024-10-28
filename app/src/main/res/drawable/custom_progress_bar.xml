@@ -1,0 +1,22 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background of the progress bar -->
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <solid android:color="#D3D3D3"/> <!-- Background color -->
+            <corners android:radius="8dp"/> <!-- Rounded corners -->
+        </shape>
+    </item>
+
+    <!-- Gradient progress item -->
+    <item android:id="@android:id/progress">
+        <clip android:clipOrientation="horizontal">
+            <shape android:shape="rectangle">
+                <corners android:radius="8dp"/> <!-- Rounded corners -->
+                <gradient
+                    android:startColor="#FFB6C1"
+                    android:endColor="@android:color/holo_green_light"
+                    android:angle="0"/>
+            </shape>
+        </clip>
+    </item>
+</layer-list>
