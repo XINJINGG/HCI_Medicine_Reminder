@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -54,10 +54,10 @@
             app:layout_constraintTop_toBottomOf="@id/medicineOfDayHeader"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:nestedScrollingEnabled="false" /> <!-- Disable nested scrolling -->
 
         <!-- Missed Medication Header -->
-
         <TextView
             android:id="@+id/missedMedicationHeader"
             android:layout_width="wrap_content"
@@ -73,13 +73,14 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/missedMedicineList"
-            android:layout_width="410dp"
-            android:layout_height="143dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:paddingBottom="56dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/missedMedicationHeader" />
+            app:layout_constraintTop_toBottomOf="@id/missedMedicationHeader"
+            android:nestedScrollingEnabled="false" /> <!-- Disable nested scrolling -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

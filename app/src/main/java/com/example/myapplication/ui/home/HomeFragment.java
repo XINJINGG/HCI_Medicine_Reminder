@@ -64,6 +64,9 @@ public class HomeFragment extends Fragment {
         missedMedicineList.add(new Medicine("Metformin", "Diabetes management",
                 R.drawable.ic_baseline_medication_24, "1 hr ago",
                 "Woodland Watson",20));
+        missedMedicineList.add(new Medicine("Metformin", "Diabetes management",
+                R.drawable.ic_baseline_medication_24, "1 hr ago",
+                "Woodland Watson",20));
 
 
         missedMedicineAdapter = new MedicineAdapter(getContext(), missedMedicineList);
