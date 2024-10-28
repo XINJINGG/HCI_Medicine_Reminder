@@ -1,8 +1,22 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">CYpher</string>
     <string name="title_home">Home</string>
     <string name="title_medication">Medication</string>
     <string name="title_alarms">Alarms</string>
     <string name="title_rewards">Rewards</string>
     <string name="title_profile">Profile</string>
+
+    <!--array for alarm timing-->
+    <string-array name="timing_options">
+        <item>8:00 AM</item>
+        <item>13:00 PM</item>
+        <item>18:00 PM</item>
+    </string-array>
+
+    <!--array for medicine selection-->
+    <string-array name="medicine_options">
+        <item>Donepezil</item>
+        <item>Omeprazole</item>
+    </string-array>
+
 </resources>

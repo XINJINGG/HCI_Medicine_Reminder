@@ -5,15 +5,41 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class AlarmsViewModel extends ViewModel {
+    private final MutableLiveData<Boolean> isAlarmTimingDeleted = new MutableLiveData<>(false);
+    private final MutableLiveData<Boolean> isAlarmSaved = new MutableLiveData<>(false);
+    private final MutableLiveData<Boolean> isAlarmAdded = new MutableLiveData<>(false);
+    private final MutableLiveData<Boolean> isAlarmDeleted = new MutableLiveData<>(false);
 
-    private final MutableLiveData<String> mText;
-
-    public AlarmsViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
+    public LiveData<Boolean> getIsAlarmTimingDeleted() {
+        return isAlarmTimingDeleted;
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void setAlarmTimingDeleted(boolean isDeleted) {
+        isAlarmTimingDeleted.setValue(isDeleted);
     }
+
+    public LiveData<Boolean> getIsAlarmDeleted() {
+        return isAlarmDeleted;
+    }
+
+    public void setAlarmDeleted(boolean isDeleted) {
+        isAlarmDeleted.setValue(isDeleted);
+    }
+
+    public LiveData<Boolean> getIsAlarmSaved() {
+        return isAlarmSaved;
+    }
+
+    public void setAlarmSaved(boolean isSaved) {
+        isAlarmSaved.setValue(isSaved);
+    }
+
+    public LiveData<Boolean> getIsAlarmAdded() {
+        return isAlarmAdded;
+    }
+
+    public void setAlarmAdded(boolean isAdded) {
+        isAlarmAdded.setValue(isAdded);
+    }
+
 }

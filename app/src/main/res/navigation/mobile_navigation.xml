@@ -15,32 +15,93 @@
         android:id="@+id/navigation_alarm"
         android:name="com.example.myapplication.ui.alarms.AlarmsFragment"
         android:label="@string/title_alarms"
-        tools:layout="@layout/fragment_alarm" />
+        tools:layout="@layout/fragment_alarm">
+        <action
+            android:id="@+id/toEditAlarmFragment"
+            app:destination="@id/navigation_editalarm" />
+        <action
+            android:id="@+id/toAddAlarmFragment"
+            app:destination="@id/navigation_addalarm" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_editalarm"
+        android:name="com.example.myapplication.ui.alarms.EditAlarmsFragment"
+        android:label="Edit Alarm"
+        tools:layout="@layout/fragment_edit_alarms">
+        <action
+            android:id="@+id/toAlarmFragment"
+            app:destination="@id/navigation_alarm" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_addalarm"
+        android:name="com.example.myapplication.ui.alarms.AddAlarmsFragment"
+        android:label="Add Alarm"
+        tools:layout="@layout/fragment_addalarm">
+        <action
+            android:id="@+id/toAlarmFragment"
+            app:destination="@id/navigation_alarm" />
+    </fragment>
+
     <fragment
         android:id="@+id/navigation_medication"
         android:name="com.example.myapplication.ui.medication.MedicationFragment"
         android:label="@string/title_medication"
-        tools:layout="@layout/fragment_medication" />
+        tools:layout="@layout/fragment_medication">
+        <action
+            android:id="@+id/action_medicationFragment_to_addMedicationFragment"
+            app:destination="@id/addMedicationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addMedicationFragment"
+        android:name="com.example.myapplication.ui.medication.AddMedicationFragment"
+        android:label="title_add_medication"
+        tools:layout="@layout/fragment_add_medication" />
+
     <fragment
         android:id="@+id/navigation_rewards"
         android:name="com.example.myapplication.ui.rewards.RewardsFragment"
         android:label="@string/title_rewards"
-        tools:layout="@layout/fragment_rewards" />
+        tools:layout="@layout/fragment_rewards">
+        <action
+            android:id="@+id/action_rewardFragment_to_claimablerewardFragment"
+            app:destination="@id/navigation_claimablereward" />
+        <action
+            android:id="@+id/action_rewardFragment_to_availablerewardFragment"
+            app:destination="@id/navigation_availablereward" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_claimablereward"
+        android:name="com.example.myapplication.ui.rewards.ClaimableRewardFragment"
+        android:label="Claimable rewards"
+        tools:layout="@layout/fragment_claimablereward" />
+    <fragment
+        android:id="@+id/navigation_availablereward"
+        android:name="com.example.myapplication.ui.rewards.AvailableRewardFragment"
+        android:label="Available rewards"
+        tools:layout="@layout/fragment_availablereward" />
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.myapplication.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile">
-    <action
-        android:id="@+id/action_profileFragment_to_editProfileFragment"
-        app:destination="@id/navigation_editprofile" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/navigation_editprofile" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_editprofile"
         android:name="com.example.myapplication.ui.profile.EditProfileFragment"
         android:label="EditProfile"
-        tools:layout="@layout/fragment_editprofile" />
+        tools:layout="@layout/fragment_editprofile">
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/navigation_profile" />
+    </fragment>
 
 </navigation>
