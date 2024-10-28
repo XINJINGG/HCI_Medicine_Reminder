@@ -44,7 +44,6 @@
             app:destination="@id/navigation_alarm" />
     </fragment>
 
-
     <fragment
         android:id="@+id/navigation_medication"
         android:name="com.example.myapplication.ui.medication.MedicationFragment"
@@ -65,7 +64,25 @@
         android:id="@+id/navigation_rewards"
         android:name="com.example.myapplication.ui.rewards.RewardsFragment"
         android:label="@string/title_rewards"
-        tools:layout="@layout/fragment_rewards" />
+        tools:layout="@layout/fragment_rewards">
+        <action
+            android:id="@+id/action_rewardFragment_to_claimablerewardFragment"
+            app:destination="@id/navigation_claimablereward" />
+        <action
+            android:id="@+id/action_rewardFragment_to_availablerewardFragment"
+            app:destination="@id/navigation_availablereward" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_claimablereward"
+        android:name="com.example.myapplication.ui.rewards.ClaimableRewardFragment"
+        android:label="Claimable rewards"
+        tools:layout="@layout/fragment_claimablereward" />
+    <fragment
+        android:id="@+id/navigation_availablereward"
+        android:name="com.example.myapplication.ui.rewards.AvailableRewardFragment"
+        android:label="Available rewards"
+        tools:layout="@layout/fragment_availablereward" />
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -83,8 +100,8 @@
         android:label="EditProfile"
         tools:layout="@layout/fragment_editprofile">
         <action
-        android:id="@+id/action_editProfileFragment_to_profileFragment"
-        app:destination="@id/navigation_profile" />
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/navigation_profile" />
     </fragment>
 
 </navigation>
