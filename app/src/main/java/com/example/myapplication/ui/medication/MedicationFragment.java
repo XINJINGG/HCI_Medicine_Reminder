@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.myapplication.R;
+import com.example.myapplication.databinding.FragmentHomeBinding;
 
 import com.example.myapplication.databinding.FragmentMedicationBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -38,9 +40,4 @@ public class MedicationFragment extends Fragment {
         return root;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
 }
