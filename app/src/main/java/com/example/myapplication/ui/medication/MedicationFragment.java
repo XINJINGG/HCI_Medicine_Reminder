@@ -32,6 +32,7 @@ public class MedicationFragment extends Fragment {
         binding = FragmentMedicationBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        // Navigate to the medicine tracker fragment
         medicationTrackerBtn = root.findViewById(R.id.medicationTrackerButton);
         // Set an OnClickListener to navigate to medicineTrackerFragment
         medicationTrackerBtn.setOnClickListener(new View.OnClickListener() {
