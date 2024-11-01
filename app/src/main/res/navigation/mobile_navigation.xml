@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_medicationFragment_to_addMedicationFragment"
             app:destination="@id/addMedicationFragment" />
+        <action
+            android:id="@+id/action_navigation_medication_to_navigation_medicationTracker"
+            app:destination="@id/navigation_medicationTracker" />
     </fragment>
 
     <fragment
@@ -98,10 +101,18 @@
         android:id="@+id/navigation_editprofile"
         android:name="com.example.myapplication.ui.profile.EditProfileFragment"
         android:label="EditProfile"
-        tools:layout="@layout/fragment_editprofile">
-        <action
+        tools:layout="@layout/fragment_editprofile" />
+   <action
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@id/navigation_profile" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_medicationTracker"
+        android:name="com.example.myapplication.ui.medication.tracker.MedicineTrackerFragment"
+        android:label="MedicationTracker"
+        tools:layout="@layout/fragment_medicine_tracker" />
+
+        
 
 </navigation>
