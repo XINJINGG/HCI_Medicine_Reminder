@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:padding="3dp">
+
+    <!-- Image or Icon for Medicine -->
+    <ImageView
+        android:id="@+id/medicineIcon"
+        android:layout_width="88dp"
+        android:layout_height="94dp"
+        android:contentDescription="test"
+        android:src="@drawable/ic_baseline_medication_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Medicine Information -->
+
+    <!-- Time Remaining -->
+    <TextView
+        android:id="@+id/medicineInfo"
+        android:layout_width="146dp"
+        android:layout_height="81dp"
+        android:text="Medicine Source\nMedicine Name\nMedication purpose"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/medicineIcon"
+        app:layout_constraintEnd_toStartOf="@+id/timeRemaining"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/medicineIcon"
+        app:layout_constraintTop_toTopOf="@+id/medicineIcon"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <!-- Progress Indicator -->
+
+    <TextView
+        android:id="@+id/timeRemaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:text="0 hrs"
+        android:textSize="20sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/medicineIcon"
+        app:layout_constraintEnd_toStartOf="@+id/progress_bar" />
+
+    <!-- Percentage Text -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="38dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="32dp"
+        android:max="100"
+        android:progressDrawable="@drawable/custom_progress_bar"
+        android:rotation="270"
+        app:layout_constraintBottom_toBottomOf="@+id/medicineInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/medicineInfo"
+        app:layout_constraintVertical_bias="0.416"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <TextView
+        android:id="@+id/percentageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0%"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

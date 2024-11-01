@@ -5,6 +5,18 @@
     <string name="title_alarms">Alarms</string>
     <string name="title_rewards">Rewards</string>
     <string name="title_profile">Profile</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--array for alarm timing-->
+    <string-array name="timing_options">
+        <item>8:00 AM</item>
+        <item>13:00 PM</item>
+        <item>18:00 PM</item>
+    </string-array>
+
+    <!--array for medicine selection-->
+    <string-array name="medicine_options">
+        <item>Donepezil</item>
+        <item>Omeprazole</item>
+    </string-array>
+
 </resources>

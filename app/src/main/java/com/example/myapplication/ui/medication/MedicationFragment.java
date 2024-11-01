@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.myapplication.R;
+import com.example.myapplication.databinding.FragmentHomeBinding;
 
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentMedicationBinding;
@@ -58,9 +60,4 @@ public class MedicationFragment extends Fragment {
         return root;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
 }
