@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
@@ -28,14 +27,12 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
-
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.greetingBanner;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        // Set the greeting text directly without ViewModel
+        textView.setText("Hello, User!"); // Set your desired greeting text here
 
         // Initialize the RecyclerViews and their adapters
         medicineRecyclerView = binding.medicineList; // Assuming you have defined this in your Fragment's layout
@@ -47,11 +44,11 @@ public class HomeFragment extends Fragment {
         // Sample data for the medicine list
         medicineList = new ArrayList<>();
         medicineList.add(new Medicine("Amlodipine", "Blood pressure control",
-                R.drawable.ic_baseline_medication_24, "1 hr",
+                R.drawable.amlodipine, "1 hr",
                 "Woodland Watson", 70));
         medicineList.add(new Medicine("Atorvastatin", "Cholesterol management",
-                R.drawable.ic_baseline_medication_24, "2 hrs",
-                "Woodland Watson",80));
+                R.drawable.atorvastatin, "2 hrs",
+                "Woodland Watson", 80));
 
         medicineAdapter = new MedicineAdapter(getContext(), medicineList);
         medicineRecyclerView.setAdapter(medicineAdapter);
@@ -62,12 +59,11 @@ public class HomeFragment extends Fragment {
         // Sample data for the missed medication list
         missedMedicineList = new ArrayList<>();
         missedMedicineList.add(new Medicine("Metformin", "Diabetes management",
-                R.drawable.ic_baseline_medication_24, "1 hr ago",
-                "Woodland Watson",20));
-        missedMedicineList.add(new Medicine("Metformin", "Diabetes management",
-                R.drawable.ic_baseline_medication_24, "1 hr ago",
-                "Woodland Watson",20));
-
+                R.drawable.metformin, "1 hr ago",
+                "Woodland Watson", 20));
+        missedMedicineList.add(new Medicine("Aspirin", "Cardiovascular health",
+                R.drawable.aspirin, "1 hr ago",
+                "Woodland Watson", 20));
 
         missedMedicineAdapter = new MedicineAdapter(getContext(), missedMedicineList);
         missedMedicineRecyclerView.setAdapter(missedMedicineAdapter);

@@ -49,7 +49,9 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
 
     public static class MedicineViewHolder extends RecyclerView.ViewHolder {
         private final ImageView medicineIcon;
-        private final TextView medicineInfo;
+        private final TextView medicineName;
+        private final TextView medicinePurpose;
+        private final TextView medicineSource;
         private final TextView timeRemaining;
         private final ProgressBar progressBar;
         private final TextView percentageText;
@@ -57,7 +59,9 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
         public MedicineViewHolder(@NonNull View itemView) {
             super(itemView);
             medicineIcon = itemView.findViewById(R.id.medicineIcon);
-            medicineInfo = itemView.findViewById(R.id.medicineInfo);
+            medicineName = itemView.findViewById(R.id.medicineName);
+            medicinePurpose = itemView.findViewById(R.id.medicinePurpose);
+            medicineSource = itemView.findViewById(R.id.medicineSource);
             timeRemaining = itemView.findViewById(R.id.timeRemaining);
             progressBar = itemView.findViewById(R.id.progress_bar);
             percentageText = itemView.findViewById(R.id.percentageText);
@@ -65,7 +69,9 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
 
         public void bind(Medicine medicine) {
             medicineIcon.setImageResource(medicine.getImageResId());
-            medicineInfo.setText(medicine.getSource() + "\n" + medicine.getName() + "\n" + medicine.getPurpose());
+            medicineName.setText(medicine.getName());
+            medicinePurpose.setText(medicine.getPurpose());
+            medicineSource.setText(medicine.getSource());
             timeRemaining.setText(medicine.getTimeRemaining());
 
             // Get the percentage
@@ -73,15 +79,13 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
             progressBar.setProgress(percentage);
             percentageText.setText(percentage + "%");
 
-            // Change the color of the progress based on percentage
+            // Change progress color based on percentage
             if (percentage < 30) {
-                // Set progress to red if below 30%
                 progressBar.getProgressDrawable().setColorFilter(RED_COLOR, PorterDuff.Mode.SRC_IN);
             } else {
-                // Set progress to green if 30% or above
                 progressBar.getProgressDrawable().setColorFilter(GREEN_COLOR, PorterDuff.Mode.SRC_IN);
             }
         }
-
     }
+
 }
