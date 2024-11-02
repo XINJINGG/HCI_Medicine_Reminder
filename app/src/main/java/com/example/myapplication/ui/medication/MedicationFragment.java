@@ -54,7 +54,8 @@ public class MedicationFragment extends Fragment {
         // Setup FAB click listener
         FloatingActionButton addButton = binding.addMedicationButton;
         addButton.setOnClickListener(v -> {
-            // TODO: Implement add medication dialog or navigation xd
+            NavHostFragment.findNavController(MedicationFragment.this)
+                    .navigate(R.id.action_medicationFragment_to_addMedicationFragment);
         });
 
         return root;
