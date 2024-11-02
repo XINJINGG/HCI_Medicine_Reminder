@@ -10,11 +10,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.R;
+import com.example.myapplication.ui.medication.AddMedicationFragment;
 
 public class EditProfileFragment extends Fragment {
 
@@ -40,9 +42,22 @@ public class EditProfileFragment extends Fragment {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Saved!", Toast.LENGTH_SHORT).show();
-                NavHostFragment.findNavController(EditProfileFragment.this)
-                        .navigate(R.id.action_editProfileFragment_to_profileFragment);
+
+                // Create the AlertDialog
+                new AlertDialog.Builder(requireContext())
+                        .setTitle("Edit Profile")
+                        .setMessage("Save Changes?")
+                        .setPositiveButton("Yes", (dialog, which) -> {
+                            Toast.makeText(getContext(), "Saved!", Toast.LENGTH_SHORT).show();
+                            NavHostFragment.findNavController(EditProfileFragment.this)
+                                    .navigate(R.id.action_editProfileFragment_to_profileFragment);
+                        })
+                        .setNegativeButton("No", (dialog, which) -> {
+                            // Close the dialog without any action
+                            dialog.dismiss();
+                        })
+                        .show();
+
             }
 
 
