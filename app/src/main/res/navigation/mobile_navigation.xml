@@ -52,13 +52,22 @@
         <action
             android:id="@+id/action_medicationFragment_to_addMedicationFragment"
             app:destination="@id/addMedicationFragment" />
+        <action
+            android:id="@+id/action_navigation_medication_to_navigation_medicationTracker"
+            app:destination="@id/navigation_medicationTracker" />
     </fragment>
 
     <fragment
         android:id="@+id/addMedicationFragment"
         android:name="com.example.myapplication.ui.medication.AddMedicationFragment"
-        android:label="title_add_medication"
-        tools:layout="@layout/fragment_add_medication" />
+        android:label="Add Medication"
+        tools:layout="@layout/fragment_add_medication" >
+        <action
+            android:id="@+id/action_addMedicationFragment_to_medicationFragment"
+            app:destination="@id/navigation_medication" />
+
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_rewards"
@@ -98,10 +107,18 @@
         android:id="@+id/navigation_editprofile"
         android:name="com.example.myapplication.ui.profile.EditProfileFragment"
         android:label="EditProfile"
-        tools:layout="@layout/fragment_editprofile">
-        <action
+        tools:layout="@layout/fragment_editprofile" />
+   <action
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@id/navigation_profile" />
-    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_medicationTracker"
+        android:name="com.example.myapplication.ui.medication.tracker.MedicineTrackerFragment"
+        android:label="MedicationTracker"
+        tools:layout="@layout/fragment_medicine_tracker" />
+
+
+        
 
 </navigation>

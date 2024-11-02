@@ -7,10 +7,16 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentAddMedicationBinding;
+import com.example.myapplication.ui.alarms.AddAlarmsFragment;
+import com.example.myapplication.ui.alarms.AlarmsViewModel;
 
 public class AddMedicationFragment extends Fragment {
 
@@ -28,9 +34,25 @@ public class AddMedicationFragment extends Fragment {
 
         // Save button click listener
         binding.saveButton.setOnClickListener(v -> {
+            // Create the AlertDialog
+            new AlertDialog.Builder(requireContext())
+                    .setTitle("Add medication")
+                    .setMessage("Are you sure you want to add this medicine?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        // Navigate to AlarmsFragment on confirmation
+                        Toast.makeText(getContext(), "Medication saved", Toast.LENGTH_SHORT).show();
+                        NavHostFragment.findNavController(AddMedicationFragment.this)
+                                .navigate(R.id.action_addMedicationFragment_to_medicationFragment);
+                    })
+                    .setNegativeButton("No", (dialog, which) -> {
+                        // Close the dialog without any action
+                        dialog.dismiss();
+                    })
+                    .show();
+
+
             // In a real app, you would save the data here
-            Toast.makeText(getContext(), "Medication saved", Toast.LENGTH_SHORT).show();
-            getActivity().onBackPressed();
+
         });
 
         return root;
