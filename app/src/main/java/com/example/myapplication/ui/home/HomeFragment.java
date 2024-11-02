@@ -12,8 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
@@ -24,6 +27,9 @@ public class HomeFragment extends Fragment {
     private MedicineAdapter missedMedicineAdapter;
     private List<Medicine> medicineList;
     private List<Medicine> missedMedicineList; // List for missed medicines
+    private TextView dateText; // For dynamic date
+
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -70,6 +76,20 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        dateText = view.findViewById(R.id.dateText);
+        setCurrentDate();
+    }
+    private void setCurrentDate() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd MMM yyyy", Locale.getDefault());
+        String currentDate = dateFormat.format(calendar.getTime());
+        dateText.setText(currentDate);
+    }
+
 
     @Override
     public void onDestroyView() {
