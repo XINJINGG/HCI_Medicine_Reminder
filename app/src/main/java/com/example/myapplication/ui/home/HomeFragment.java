@@ -27,8 +27,8 @@ public class HomeFragment extends Fragment {
     private MedicineAdapter missedMedicineAdapter;
     private List<Medicine> medicineList;
     private List<Medicine> missedMedicineList; // List for missed medicines
-    private TextView dateText; // For dynamic date
 
+    private TextView dateText; // For dynamic date
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -39,6 +39,7 @@ public class HomeFragment extends Fragment {
         final TextView textView = binding.greetingBanner;
         // Set the greeting text directly without ViewModel
         textView.setText("Hello, User!"); // Set your desired greeting text here
+
 
         // Initialize the RecyclerViews and their adapters
         medicineRecyclerView = binding.medicineList; // Assuming you have defined this in your Fragment's layout
@@ -83,12 +84,14 @@ public class HomeFragment extends Fragment {
         dateText = view.findViewById(R.id.dateText);
         setCurrentDate();
     }
+
     private void setCurrentDate() {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd MMM yyyy", Locale.getDefault());
         String currentDate = dateFormat.format(calendar.getTime());
         dateText.setText(currentDate);
     }
+
 
 
     @Override
