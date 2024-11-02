@@ -12,8 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
@@ -25,6 +28,9 @@ public class HomeFragment extends Fragment {
     private List<Medicine> medicineList;
     private List<Medicine> missedMedicineList; // List for missed medicines
 
+    private TextView dateText; // For dynamic date
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -33,6 +39,7 @@ public class HomeFragment extends Fragment {
         final TextView textView = binding.greetingBanner;
         // Set the greeting text directly without ViewModel
         textView.setText("Hello, User!"); // Set your desired greeting text here
+
 
         // Initialize the RecyclerViews and their adapters
         medicineRecyclerView = binding.medicineList; // Assuming you have defined this in your Fragment's layout
@@ -69,6 +76,20 @@ public class HomeFragment extends Fragment {
         missedMedicineRecyclerView.setAdapter(missedMedicineAdapter);
 
         return root;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        dateText = view.findViewById(R.id.dateText);
+        setCurrentDate();
+    }
+
+    private void setCurrentDate() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd MMM yyyy", Locale.getDefault());
+        String currentDate = dateFormat.format(calendar.getTime());
+        dateText.setText(currentDate);
     }
 
     @Override
