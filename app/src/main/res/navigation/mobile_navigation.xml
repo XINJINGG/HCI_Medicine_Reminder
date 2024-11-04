@@ -125,7 +125,16 @@
         android:id="@+id/medicineDetailsFragment"
         android:name="com.example.myapplication.ui.medication.MedicineDetailsFragment"
         android:label="@string/title_medication_details"
-        tools:layout="@layout/fragment_medicine_details" />
+        tools:layout="@layout/fragment_medicine_details" >
+        <action
+            android:id="@+id/action_medicineDetailsFragment_to_editMedicationDetailsFragment"
+            app:destination="@id/editMedicationDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editMedicationDetailsFragment"
+        android:name="com.example.myapplication.ui.medication.EditMedicationDetailsFragment"
+        android:label="fragment_edit_medication_details"
+        tools:layout="@layout/fragment_edit_medication_details" />
 
 
 </navigation>
