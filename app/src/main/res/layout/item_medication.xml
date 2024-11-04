@@ -41,6 +41,36 @@
             app:layout_constraintStart_toEndOf="@id/medicineIcon"
             app:layout_constraintTop_toBottomOf="@id/medicineName" />
 
+        <TextView
+            android:id="@+id/medicineLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Obtained from: Pharmacy"
+            app:layout_constraintEnd_toStartOf="@id/nextIcon"
+            app:layout_constraintStart_toEndOf="@id/medicineIcon"
+            app:layout_constraintTop_toBottomOf="@id/medicineDetails" />
+
+        <TextView
+            android:id="@+id/medicineDosage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Dosage: 2 tablets"
+            app:layout_constraintEnd_toStartOf="@id/nextIcon"
+            app:layout_constraintStart_toEndOf="@id/medicineIcon"
+            app:layout_constraintTop_toBottomOf="@id/medicineLocation" />
+
+        <TextView
+            android:id="@+id/pillsLeft"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="1 out of 10 pills left"
+            app:layout_constraintEnd_toStartOf="@id/nextIcon"
+            app:layout_constraintStart_toEndOf="@id/medicineIcon"
+            app:layout_constraintTop_toBottomOf="@id/medicineDosage" />
+
         <ImageView
             android:id="@+id/nextIcon"
             android:layout_width="wrap_content"
@@ -52,4 +82,5 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>

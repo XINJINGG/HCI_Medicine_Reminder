@@ -3,7 +3,6 @@ package com.example.myapplication.ui.medication;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 
-public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.MedicationViewHolder> {
+public class MedicationPageCard extends RecyclerView.Adapter<MedicationPageCard.MedicationViewHolder> {
 
     // Sample data arrays
     private String[] medicineNames = {
@@ -24,20 +23,6 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
             "250mg • Three times a day", "10mg • Once a day",
             "500mg • Twice a day", "20mg • Once a day", "10mg • Once a day",
             "50mcg • Once a day", "20mg • Once a day"
-    };
-
-    private String[] medicineLocations = {
-            "Obtained from: Pharmacy", "Obtained from: Online", "Obtained from: Clinic",
-            "Obtained from: Hospital", "Obtained from: Pharmacy",
-            "Obtained from: Hospital", "Obtained from: Pharmacy", "Obtained from: Online",
-            "Obtained from: Clinic", "Obtained from: Pharmacy"
-    };
-
-    private String[] medicineDosages = {
-            "Dosage: 1 tablet", "Dosage: 2 tablets", "Dosage: 1 tablet",
-            "Dosage: 3 tablets", "Dosage: 1 tablet",
-            "Dosage: 2 tablets", "Dosage: 1 tablet", "Dosage: 2 tablets",
-            "Dosage: 1 tablet", "Dosage: 1 tablet"
     };
 
     private String[] pillsLeft = {
@@ -60,11 +45,7 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
         // Binding hardcoded values from the arrays
         holder.medicineName.setText(medicineNames[position]);
         holder.medicineDetails.setText(medicineDetails[position]);
-        holder.medicineLocation.setText(medicineLocations[position]);
-        holder.medicineDosage.setText(medicineDosages[position]);
         holder.pillsLeft.setText(pillsLeft[position]);
-        // Set a default icon for demonstration; replace with actual resource if needed
-        holder.medicineIcon.setImageResource(android.R.drawable.ic_menu_gallery);
     }
 
     @Override
@@ -76,21 +57,14 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
     static class MedicationViewHolder extends RecyclerView.ViewHolder {
         TextView medicineName;
         TextView medicineDetails;
-        TextView medicineLocation;
-        TextView medicineDosage;
-        TextView pillsLeft;
-        ImageView medicineIcon;
+        TextView pillsLeft; // New TextView for pills left
 
         MedicationViewHolder(View itemView) {
             super(itemView);
             medicineName = itemView.findViewById(R.id.medicineName);
             medicineDetails = itemView.findViewById(R.id.medicineDetails);
-            medicineLocation = itemView.findViewById(R.id.medicineLocation);
-            medicineDosage = itemView.findViewById(R.id.medicineDosage);
-            pillsLeft = itemView.findViewById(R.id.pillsLeft);
-            medicineIcon = itemView.findViewById(R.id.medicineIcon);
+            pillsLeft = itemView.findViewById(R.id.pillsLeft); // Find the new TextView
         }
     }
 }
-
 
