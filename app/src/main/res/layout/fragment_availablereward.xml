@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textViewBadge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -15,10 +15,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBadge" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewBadge"
         android:layout_width="220dp"
         android:layout_height="205dp"
         android:layout_marginTop="32dp"
@@ -29,7 +29,7 @@
         app:srcCompat="@drawable/watson" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textViewBadgeinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -37,10 +37,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewBadge" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/textViewBadgeDays"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -48,7 +48,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewBadgeinfo" />
 
     <Button
         android:id="@+id/buttonUnavailable"
@@ -59,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewBadgeDays" />
 
     <TextView
         android:id="@+id/textView15"

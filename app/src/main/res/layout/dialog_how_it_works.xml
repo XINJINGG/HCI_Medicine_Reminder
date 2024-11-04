@@ -1,0 +1,28 @@
+<!-- res/layout/dialog_how_it_works.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How It Works"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:text="Take your medication consistently everyday to increment your streak score. Your streak score can be used to claimed badges at the Claimable badges section. Claimed badged will be shown in your profile!"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/closeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Got It" />
+</LinearLayout>

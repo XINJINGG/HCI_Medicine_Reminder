@@ -75,23 +75,16 @@
         android:label="@string/title_rewards"
         tools:layout="@layout/fragment_rewards">
         <action
-            android:id="@+id/action_rewardFragment_to_claimablerewardFragment"
-            app:destination="@id/navigation_claimablereward" />
-        <action
-            android:id="@+id/action_rewardFragment_to_availablerewardFragment"
-            app:destination="@id/navigation_availablereward" />
+            android:id="@+id/action_rewardFragment_to_claimablebadgeFragment"
+            app:destination="@id/navigation_claimablebadge" />
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_claimablereward"
-        android:name="com.example.myapplication.ui.rewards.ClaimableRewardFragment"
-        android:label="Claimable rewards"
-        tools:layout="@layout/fragment_claimablereward" />
-    <fragment
-        android:id="@+id/navigation_availablereward"
-        android:name="com.example.myapplication.ui.rewards.AvailableRewardFragment"
-        android:label="Available rewards"
-        tools:layout="@layout/fragment_availablereward" />
+        android:id="@+id/navigation_claimablebadge"
+        android:name="com.example.myapplication.ui.rewards.ClaimableBadges"
+        android:label="Claimable Badges"
+        tools:layout="@layout/fragment_claimablebadge" />
+
 
     <fragment
         android:id="@+id/navigation_profile"
