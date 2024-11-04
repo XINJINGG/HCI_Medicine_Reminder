@@ -11,14 +11,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentAddMedicationBinding;
-import com.example.myapplication.ui.alarms.AddAlarmsFragment;
-import com.example.myapplication.ui.alarms.AlarmsViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -62,10 +58,13 @@ public class AddMedicationFragment extends Fragment {
 
     // Method to add TextWatchers to required fields
     private void addTextWatchers() {
+        // Add TextWatchers for all relevant input fields
+        binding.medicineNameInput.addTextChangedListener(textWatcher);
         binding.descriptionInput.addTextChangedListener(textWatcher);
         binding.locationInput.addTextChangedListener(textWatcher);
         binding.dosageInput.addTextChangedListener(textWatcher);
         binding.frequencyInput.addTextChangedListener(textWatcher);
+        binding.pillsLeftInput.addTextChangedListener(textWatcher);
     }
 
     // TextWatcher to enable or disable the Save button based on field validation
@@ -99,10 +98,13 @@ public class AddMedicationFragment extends Fragment {
     private boolean areAllFieldsValid() {
         boolean isValid = true;
 
-        if (isFieldEmpty(binding.descriptionLayout, "Description is required")) isValid = false;
-        if (isFieldEmpty(binding.locationLayout, "Location is required")) isValid = false;
-        if (isFieldEmpty(binding.dosageLayout, "Dosage is required")) isValid = false;
-        if (isFieldEmpty(binding.frequencyLayout, "Frequency is required")) isValid = false;
+        // Validate all fields
+        if (isFieldEmpty(binding.medicineNameInputLayout, "Medicine Name is required")) isValid = false;
+        if (isFieldEmpty(binding.descriptionInputLayout, "Description is required")) isValid = false;
+        if (isFieldEmpty(binding.locationInputLayout, "Location is required")) isValid = false;
+        if (isFieldEmpty(binding.dosageInputLayout, "Dosage is required")) isValid = false;
+        if (isFieldEmpty(binding.frequencyInputLayout, "Frequency is required")) isValid = false;
+        if (isFieldEmpty(binding.pillsLeftInputLayout, "Pills Left is required")) isValid = false;
 
         return isValid;
     }
@@ -113,3 +115,5 @@ public class AddMedicationFragment extends Fragment {
         binding = null;
     }
 }
+
+
