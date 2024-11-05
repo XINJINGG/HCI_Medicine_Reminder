@@ -28,11 +28,11 @@
 
         <!-- Medicine Name -->
         <TextView
-            android:id="@+id/medicineName"
+            android:id="@+id/medicinePurpose"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Medicine Name"
+            android:text="Purpose"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -41,19 +41,21 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Medicine Purpose -->
-        <TextView
-            android:id="@+id/medicinePurpose"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Purpose"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/medicineName"
-            app:layout_constraintEnd_toEndOf="@+id/medicineName"
-            app:layout_constraintTop_toBottomOf="@+id/medicineName"
-            app:layout_constraintHorizontal_bias="0.0" />
 
         <!-- Medicine Source -->
+        <TextView
+
+            android:id="@+id/medicineName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Medicine Name"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/medicinePurpose"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/medicinePurpose"
+            app:layout_constraintTop_toBottomOf="@+id/medicinePurpose" />
+
         <TextView
             android:id="@+id/medicineSource"
             android:layout_width="0dp"
@@ -61,9 +63,9 @@
             android:text="Source"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/medicineName"
-            app:layout_constraintEnd_toEndOf="@+id/medicineName"
-            app:layout_constraintTop_toBottomOf="@+id/medicinePurpose" />
+            app:layout_constraintStart_toStartOf="@+id/medicinePurpose"
+            app:layout_constraintEnd_toEndOf="@+id/medicinePurpose"
+            app:layout_constraintTop_toBottomOf="@+id/medicineName" />
 
         <!-- Time Remaining -->
         <TextView
@@ -73,7 +75,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="4dp"
             android:text="0 hrs"
-            android:textSize="20sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/medicineIcon"
             app:layout_constraintEnd_toStartOf="@+id/progress_bar" />
 
