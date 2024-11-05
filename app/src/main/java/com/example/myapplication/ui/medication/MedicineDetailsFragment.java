@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.medication;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -76,7 +77,7 @@ public class MedicineDetailsFragment extends Fragment {
 
             // Change progress color based on percentage
             if (progressValue < 30) {
-                medDetailsProgressBar.getProgressDrawable().setColorFilter(RED_COLOR, PorterDuff.Mode.SRC_IN);
+                medDetailsProgressBar.setIndeterminateTintList(ColorStateList.valueOf(RED_COLOR));
             } else {
                 medDetailsProgressBar.getProgressDrawable().setColorFilter(GREEN_COLOR, PorterDuff.Mode.SRC_IN);
             }
@@ -84,16 +85,16 @@ public class MedicineDetailsFragment extends Fragment {
             // Set up the click listener for the edit button
             editButton.setOnClickListener(v -> {
                 // Create a bundle to pass data to the edit fragment
-                Bundle bundle = new Bundle();
-                bundle.putString("medicineName", medDetailsName.getText().toString());
-                bundle.putString("medicinePurpose", medDetailsDescription.getText().toString());
-                bundle.putString("medicineLocation", medDetailsLocation.getText().toString());
-                bundle.putInt("medicineDosage", Integer.parseInt(medDetailsDosage.getText().toString().split(" ")[1])); // Extract dosage value
-                bundle.putInt("medicineStockCount", Integer.parseInt(medDetailsStockCount.getText().toString().split(": ")[1]));
-                bundle.putInt("medicinePillsLeft", Integer.parseInt(medDetailsPillsLeft.getText().toString().split(": ")[1]));
-                bundle.putInt("medicineImageResId", medicineImage); // Pass the image resource ID
+//                Bundle bundle = new Bundle();
+//                bundle.putString("medicineName", medDetailsName.getText().toString());
+//                bundle.putString("medicinePurpose", medDetailsDescription.getText().toString());
+//                bundle.putString("medicineLocation", medDetailsLocation.getText().toString());
+//                bundle.putInt("medicineDosage", Integer.parseInt(medDetailsDosage.getText().toString().split(" ")[1])); // Extract dosage value
+//                bundle.putInt("medicineStockCount", Integer.parseInt(medDetailsStockCount.getText().toString().split(": ")[1]));
+//                bundle.putInt("medicinePillsLeft", Integer.parseInt(medDetailsPillsLeft.getText().toString().split(": ")[1]));
+//                bundle.putInt("medicineImageResId", medicineImage); // Pass the image resource ID
                 // Navigate to the edit fragment
-                Navigation.findNavController(view).navigate(R.id.action_medicineDetailsFragment_to_editMedicationDetailsFragment, bundle);
+                Navigation.findNavController(view).navigate(R.id.action_medicineDetailsFragment_to_editMedicationDetailsFragment);
             });
         }
 

@@ -7,61 +7,152 @@
     tools:context=".ui.medication.EditMedicationDetailsFragment">
 
     <ScrollView
-        android:layout_width="391dp"
-        android:layout_height="749dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:minHeight="850dp">
 
-            <ImageView
-                android:id="@+id/edit_med_img"
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:src="@android:drawable/ic_menu_gallery"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/edit_med_img"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:src="@android:drawable/ic_menu_gallery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edit_med_name_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Medicine Name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_med_name_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Medicine Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_med_img">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_name_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="hint" />
-            </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edit_med_description_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Description"
-                app:layout_constraintEnd_toEndOf="@id/edit_med_name_layout"
-                app:layout_constraintStart_toStartOf="@id/edit_med_name_layout"
-                app:layout_constraintTop_toBottomOf="parent"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_med_description_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        app:layout_constraintEnd_toEndOf="@id/edit_med_name_layout"
+        app:layout_constraintStart_toStartOf="@id/edit_med_name_layout"
+        app:layout_constraintTop_toBottomOf="@+id/edit_med_name_layout">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_description_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="hint" />
-            </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_description_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_med_location_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Purchased at"
+        app:layout_constraintEnd_toEndOf="@id/edit_med_description_layout"
+        app:layout_constraintStart_toStartOf="@id/edit_med_description_layout"
+        app:layout_constraintTop_toBottomOf="@+id/edit_med_description_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_location_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_med_dosage_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Dosage"
+        app:layout_constraintEnd_toStartOf="@+id/edit_med_frequency_layout"
+        app:layout_constraintStart_toStartOf="@+id/edit_med_location_layout"
+        app:layout_constraintTop_toBottomOf="@+id/edit_med_location_layout"
+        app:layout_constraintWidth_percent="0.5">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_dosage_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_med_frequency_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Frequency"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edit_med_dosage_layout"
+        app:layout_constraintTop_toBottomOf="@+id/edit_med_location_layout"
+        app:layout_constraintWidth_percent="0.5">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_frequency_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_med_stock_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Stock Count (no. of pills)"
+        app:layout_constraintEnd_toEndOf="@+id/edit_med_dosage_layout"
+        app:layout_constraintStart_toStartOf="@+id/edit_med_dosage_layout"
+        app:layout_constraintTop_toBottomOf="@+id/edit_med_dosage_layout"
+        app:layout_constraintWidth_percent="0.5">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_stock_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_med_pills_left_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Pills left"
+        app:layout_constraintEnd_toEndOf="@+id/edit_med_frequency_layout"
+        app:layout_constraintStart_toEndOf="@+id/edit_med_dosage_layout"
+        app:layout_constraintTop_toBottomOf="@+id/edit_med_frequency_layout"
+        app:layout_constraintWidth_percent="0.5">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_pills_left_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/edit_med_saveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_med_pills_left_layout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

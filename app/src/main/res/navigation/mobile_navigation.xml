@@ -133,7 +133,7 @@
     <fragment
         android:id="@+id/editMedicationDetailsFragment"
         android:name="com.example.myapplication.ui.medication.EditMedicationDetailsFragment"
-        android:label="fragment_edit_medication_details"
+        android:label="@string/title_edit_medication"
         tools:layout="@layout/fragment_edit_medication_details" />
 
 
