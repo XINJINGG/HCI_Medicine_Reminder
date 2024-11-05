@@ -50,13 +50,15 @@ public class HomeFragment extends Fragment {
 
         // Sample data for the medicine list
         medicineList = new ArrayList<>();
-        medicineList.add(new Medicine("Amlodipine", "Blood pressure control",
-                R.drawable.amlodipine, "1 hr",
-                "Woodland Watson", 70));
-        medicineList.add(new Medicine("Atorvastatin", "Cholesterol management",
-                R.drawable.atorvastatin, "2 hrs",
+//        medicineList.add(new Medicine("Amlodipine", "Blood pressure",
+//                R.drawable.amlodipine, "1 hr",
+//                "Woodland Watson", 70));
+//        medicineList.add(new Medicine("Atorvastatin", "Cholesterol",
+//                R.drawable.atorvastatin, "2 hrs",
+//                "Woodland Watson", 80));
+        medicineList.add(new Medicine("Prospan Cough", "Cough",
+                R.drawable.coughsyrup, "TO BE TAKEN IN: 2 hrs",
                 "Woodland Watson", 80));
-
         medicineAdapter = new MedicineAdapter(getContext(), medicineList);
         medicineRecyclerView.setAdapter(medicineAdapter);
 
@@ -65,12 +67,12 @@ public class HomeFragment extends Fragment {
 
         // Sample data for the missed medication list
         missedMedicineList = new ArrayList<>();
-        missedMedicineList.add(new Medicine("Metformin", "Diabetes management",
-                R.drawable.metformin, "1 hr ago",
-                "Woodland Watson", 20));
-        missedMedicineList.add(new Medicine("Aspirin", "Cardiovascular health",
-                R.drawable.aspirin, "1 hr ago",
-                "Woodland Watson", 20));
+//        missedMedicineList.add(new Medicine("Aspirin", "Cardiovascular health",
+//                R.drawable.aspirin, "1 hr ago",
+//                "Woodland Watson", 20));
+        missedMedicineList.add(new Medicine("Metformin", "Diabetes",
+                R.drawable.metformin, "MISSED : 2 hrs ago",
+                "Woodland Watson", 10));
 
         missedMedicineAdapter = new MedicineAdapter(getContext(), missedMedicineList);
         missedMedicineRecyclerView.setAdapter(missedMedicineAdapter);
