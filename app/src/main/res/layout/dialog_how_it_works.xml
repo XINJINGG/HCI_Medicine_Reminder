@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="16dp"
-        android:text="Take your medication consistently everyday to increment your streak score. Your streak score can be used to claimed badges at the Claimable badges section. Claimed badged will be shown in your profile!"
+        android:text="Take your medication consistently everyday to increment your streak score. Your streak score can be used to claim badges at the Available badges section. Claimed badged will be shown in your profile!"
         android:textSize="16sp" />
 
     <Button

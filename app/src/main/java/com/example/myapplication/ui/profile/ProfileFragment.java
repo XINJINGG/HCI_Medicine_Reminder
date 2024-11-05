@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.profile;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,6 +29,18 @@ public class ProfileFragment extends Fragment {
 
         // Find the edit profile button using findViewById
         Button editProfileButton = root.findViewById(R.id.buttonEdit);
+
+        ImageView imageViewBadge = root.findViewById(R.id.imageViewBadge);
+
+        // Retrieve claim status from SharedPreferences
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("BadgePrefs", Context.MODE_PRIVATE);
+        boolean badge0Claimed = sharedPreferences.getBoolean("badge0Claimed", false);
+
+
+        // If badge0 is claimed, display the twoday image
+        if (badge0Claimed) {
+            imageViewBadge.setImageResource(R.drawable.twoday);
+        }
         // Set an OnClickListener to navigate to EditProfileFragment
         editProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,8 @@
 package com.example.myapplication.ui.rewards;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,10 +30,25 @@ public class RewardsFragment extends Fragment {
         // Inflate the layout directly
         View root = inflater.inflate(R.layout.fragment_rewards, container, false);
 
+        CardView badge0 = root.findViewById(R.id.Badge0);
         CardView badge1 = root.findViewById(R.id.Badge1);
         CardView badge2 = root.findViewById(R.id.Badge2);
         CardView badge3 = root.findViewById(R.id.Badge3);
         Button findOutMoreButton = root.findViewById(R.id.buttonGuide);
+
+
+        // Set up a listener to receive the result when Badge0 is claimed
+        getParentFragmentManager().setFragmentResultListener("claimBadge0", this, (requestKey, result) -> {
+            // Hide Badge0 when the claim result is received
+            badge0.setVisibility(View.GONE);
+
+            // Save badge claim status to SharedPreferences
+            SharedPreferences sharedPreferences = requireContext().getSharedPreferences("BadgePrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("badge0Claimed", true);
+            editor.apply();
+        });
+
 
         badge1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +64,8 @@ public class RewardsFragment extends Fragment {
                         .navigate(R.id.action_rewardFragment_to_claimablebadgeFragment, bundle);
             }
         });
+
+
 
         findOutMoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +123,27 @@ public class RewardsFragment extends Fragment {
                 NavHostFragment.findNavController(RewardsFragment.this)
                         .navigate(R.id.action_rewardFragment_to_claimablebadgeFragment, bundle);
             }
+        });
+
+        // Handle the "2 Day Streak" badge (Badge0)
+        badge0.setOnClickListener(v -> {
+            // Perform any claiming logic here (e.g., updating rewards)
+
+            // Create a bundle with specific data for Badge2
+            Bundle bundle = new Bundle();
+            bundle.putInt("imageResId", R.drawable.twoday); // Image for Badge2
+            bundle.putString("text", "Two Days Streak"); // Text for Badge2
+            bundle.putString("text2", "Have a 2 day streak to get this badge");
+            bundle.putString("text3", "You can claim this badge!");
+            bundle.putBoolean("isBadge0", true); // Flag for Badge0
+
+            // Navigate and pass the bundle
+            NavHostFragment.findNavController(RewardsFragment.this)
+                    .navigate(R.id.action_rewardFragment_to_claimablebadgeFragment, bundle);
+
+            // Hide the badge after claiming
+            badge0.setVisibility(View.GONE);
+
         });
 
 
