@@ -13,9 +13,12 @@
         <!-- Greeting Banner -->
         <TextView
             android:id="@+id/greetingBanner"
-            android:layout_width="323dp"
-            android:layout_height="123dp"
+            android:layout_width="369dp"
+            android:layout_height="122dp"
+            android:background="@drawable/greeting_background_gradient"
             android:gravity="center"
+            android:text="Good Morning, User!"
+            android:textColor="@android:color/white"
             android:textSize="48sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -25,13 +28,14 @@
         <!-- Date -->
         <TextView
             android:id="@+id/dateText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="226dp"
+            android:layout_height="35dp"
+            android:gravity="center"
             android:text="Monday 14 Oct 2024"
-            app:layout_constraintTop_toBottomOf="@id/greetingBanner"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:gravity="center"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/greetingBanner" />
 
         <!-- Medicine of the Day Header -->
 
