@@ -36,14 +36,17 @@ public class RewardsFragment extends Fragment {
         CardView badge3 = root.findViewById(R.id.Badge3);
         Button findOutMoreButton = root.findViewById(R.id.buttonGuide);
 
+        // Check claim status in SharedPreferences to determine initial visibility
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("BadgePrefs", Context.MODE_PRIVATE);
+        boolean badge0Claimed = sharedPreferences.getBoolean("badge0Claimed", false);
+        badge0.setVisibility(badge0Claimed ? View.GONE : View.VISIBLE);
 
-        // Set up a listener to receive the result when Badge0 is claimed
+        // Set up a listener to handle the claim result for Badge0
         getParentFragmentManager().setFragmentResultListener("claimBadge0", this, (requestKey, result) -> {
-            // Hide Badge0 when the claim result is received
+            // Hide Badge0 after claiming
             badge0.setVisibility(View.GONE);
 
-            // Save badge claim status to SharedPreferences
-            SharedPreferences sharedPreferences = requireContext().getSharedPreferences("BadgePrefs", Context.MODE_PRIVATE);
+            // Update claim status in SharedPreferences
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("badge0Claimed", true);
             editor.apply();
@@ -140,9 +143,6 @@ public class RewardsFragment extends Fragment {
             // Navigate and pass the bundle
             NavHostFragment.findNavController(RewardsFragment.this)
                     .navigate(R.id.action_rewardFragment_to_claimablebadgeFragment, bundle);
-
-            // Hide the badge after claiming
-            badge0.setVisibility(View.GONE);
 
         });
 
