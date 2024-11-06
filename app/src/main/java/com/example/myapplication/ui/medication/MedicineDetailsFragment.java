@@ -5,6 +5,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.appcompat.app.AlertDialog;
 import com.example.myapplication.R;
+
+import java.util.Objects;
 
 public class MedicineDetailsFragment extends Fragment {
 
@@ -58,27 +61,129 @@ public class MedicineDetailsFragment extends Fragment {
 
         // Retrieve arguments
         if (getArguments() != null) {
+
             String medicineName = getArguments().getString("medicineName");
-            String medicinePurpose = getArguments().getString("medicinePurpose");
-            String medicineLocation = getArguments().getString("medicineSource");
-            int dosage = getArguments().getInt("medicineDosage", 0);
-            int stockCount = getArguments().getInt("medicineStockCount", 100);
-            int pillsLeft = getArguments().getInt("medicinePillsLeft", 0);
+
+            String medicinePurpose = getArguments().getString("medicinePurpose", "");
+            if (Objects.equals(medicinePurpose, "")) {
+               medicinePurpose = getArguments().getString("medicineDetails", "");
+            }
+
+            String medicineLocation = getArguments().getString("medicineSource", "");
+            if (Objects.equals(medicineLocation, "")) {
+                medicineLocation = getArguments().getString("medicineLocations", "");
+            }
+            // Check if medicineLocation contains a colon and extract the value after it
+            if (medicineLocation.contains(":")) {
+                medicineLocation = medicineLocation.split(":", 2)[1].trim(); // Get the text after the first colon and trim any whitespace
+            }
+
+            String dosage = getArguments().getString("medicineDetails", "500mg");
+            if (Objects.equals(dosage, "0")) {
+                dosage = getArguments().getString("medicineDetails", "500mg");
+            }
+            // Extract the number part before "mg"
+            if (dosage.contains("mg")) {
+                dosage = dosage.split("mg")[0]; // Get the part before the space (i.e., the number)
+            }
+            medDetailsDosage.setText("Dosage: " + dosage + " mg"); // Set the dosage without any extra space or characters
+
+
+            String medicineFrequency = getArguments().getString("medicineDetails", "Once a day");
+            // Check if the string contains the bullet character
+            if (medicineFrequency != null && medicineFrequency.contains("\u2022")) {
+                int bulletIndex = medicineFrequency.indexOf("\u2022");
+
+                // If the bullet is found, get the substring after it
+                if (bulletIndex != -1) {
+                    medicineFrequency = medicineFrequency.substring(bulletIndex + 1).trim();
+                }
+            }
+            medDetailsFrequency.setText(medicineFrequency);
+
+
+            medDetailsFrequency.setText(medicineFrequency);
+
+
+
+            String stockCount = getArguments().getString("pillsLeft", "100");
+            // Check if stockCount contains "out of" and extract the value after it
+            if (stockCount.contains(" out of ")) {
+                stockCount = stockCount.split("out of ")[1].trim(); // Get the value after "out of"
+                // Remove the last two words after trimming
+                String[] words = stockCount.split(" ");
+                if (words.length > 2) {
+                    StringBuilder newStockCount = new StringBuilder();
+                    for (int i = 0; i < words.length - 2; i++) {
+                        newStockCount.append(words[i]).append(" ");
+                    }
+                    stockCount = newStockCount.toString().trim(); // Trim to remove any trailing space
+                }
+            }
+            medDetailsStockCount.setText("Stock Count: " + stockCount);
+
+
             int medicineImage = getArguments().getInt("medicineImageResId", -1);
+            if (medicineImage != -1) {
+                medDetailsImg.setImageResource(medicineImage);
+            } else {
+                medDetailsImg.setImageResource(android.R.drawable.ic_menu_gallery); // Use a default image
+            }
+
+
             int progressValue = getArguments().getInt("medicinePercentage", 0);
 
+            String pillsLeft = getArguments().getString("pillsLeft", "0");
+            // Check if pillsLeft contains "out of" and extract the number before it
+            if (pillsLeft.contains(" out of ")) {
+                pillsLeft = pillsLeft.split(" out of")[0].trim(); // Get the value before "out of"
+            }
+            // If pillsLeft is still "0", set it to the progressValue instead
+            if (Objects.equals(pillsLeft, "0")) {
+                pillsLeft = String.valueOf(progressValue);
+            }
+
+            medDetailsPillsLeft.setText("Pills Left: " + pillsLeft);
+
+            try {
+                // Parse pillsLeft and stockCount
+                int pillsLeftValue = Integer.parseInt(pillsLeft);
+                int stockCountValue = Integer.parseInt(stockCount);
+
+                // Calculate progress if it's 0
+                if (progressValue == 0 && stockCountValue > 0) {
+                    progressValue = (int) ((double) pillsLeftValue / stockCountValue * 100);
+                }
+
+                // Set progress bar and percentage text
+                medDetailsProgressBar.setProgress(progressValue);
+                medDetailsProgressPercentage.setText(progressValue + "%");
+
+                // Change progress color based on percentage
+                if (progressValue < 30) {
+                    medDetailsProgressBar.setIndeterminateTintList(ColorStateList.valueOf(RED_COLOR));
+                } else {
+                    medDetailsProgressBar.getProgressDrawable().setColorFilter(GREEN_COLOR, PorterDuff.Mode.SRC_IN);
+                }
+
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                // Handle any error if parsing fails (optional)
+            }
+
             // Set data to views
-            medDetailsImg.setImageResource(medicineImage);
             medDetailsName.setText(medicineName);
             medDetailsDescription.setText("Description: " + medicinePurpose);
             medDetailsLocation.setText("Obtained from: " + medicineLocation);
             medDetailsDosage.setText("Dosage: " + dosage + " mg");
+            medDetailsFrequency.setText("Frequency: " + medicineFrequency);
             medDetailsStockCount.setText("Stock Count: " + stockCount);
-            medDetailsPillsLeft.setText("Pills Left: " + progressValue);
+            medDetailsPillsLeft.setText("Pills Left: " + pillsLeft);
 
             // Set progress bar and percentage text
             medDetailsProgressBar.setProgress(progressValue);
             medDetailsProgressPercentage.setText(progressValue + "%");
+
 
             // Change progress color based on percentage
             if (progressValue < 30) {
@@ -94,16 +199,18 @@ public class MedicineDetailsFragment extends Fragment {
                 String purposeValue = medDetailsDescription.getText().toString().split(": ")[1];
                 String locationValue = medDetailsLocation.getText().toString().split(": ")[1];
                 int dosageValue = Integer.parseInt(medDetailsDosage.getText().toString().split(" ")[1]);
+                String frequency = medDetailsFrequency.getText().toString().split(": ")[1];
                 int stockCountValue = Integer.parseInt(medDetailsStockCount.getText().toString().split(": ")[1]);
                 int pillsLeftValue = Integer.parseInt(medDetailsPillsLeft.getText().toString().split(": ")[1]);
 
+                bundle.putInt("medicineImageResId", medicineImage);
                 bundle.putString("medicineName", nameValue);
                 bundle.putString("medicinePurpose", purposeValue);
                 bundle.putString("medicineLocation", locationValue);
                 bundle.putInt("medicineDosage", dosageValue);
+                bundle.putString("medicineFrequency",frequency);
                 bundle.putInt("medicineStockCount", stockCountValue);
                 bundle.putInt("medicinePillsLeft", pillsLeftValue);
-                bundle.putInt("medicineImageResId", medicineImage);
 
                 Navigation.findNavController(view).navigate(R.id.action_medicineDetailsFragment_to_editMedicationDetailsFragment, bundle);
             });

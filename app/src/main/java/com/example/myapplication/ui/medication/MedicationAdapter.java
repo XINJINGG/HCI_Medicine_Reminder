@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.MedicationViewHolder> {
 
     // Sample data arrays
@@ -40,12 +43,40 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
             "Dosage: 1 tablet", "Dosage: 1 tablet"
     };
 
+
     private String[] pillsLeft = {
             "5 out of 10 pills left", "7 out of 20 pills left", "10 out of 30 pills left",
             "3 out of 15 pills left", "6 out of 12 pills left",
             "9 out of 25 pills left", "8 out of 40 pills left", "4 out of 10 pills left",
             "2 out of 5 pills left", "1 out of 8 pills left"
     };
+
+    private List<Medication> medicationList;
+    private OnMedicationClickListener onMedicationClickListener;
+
+    public MedicationAdapter(OnMedicationClickListener listener) {
+        this.onMedicationClickListener = listener;
+        this.medicationList = new ArrayList<>();
+
+        // Initialize with hardcoded data
+        for (int i = 0; i < medicineNames.length; i++) {
+            medicationList.add(new Medication(
+                    medicineNames[i],
+                    medicineDetails[i],
+                    medicineLocations[i],
+                    medicineDosages[i],
+                    pillsLeft[i]
+            ));
+        }
+    }
+
+    // Method to remove medication
+    public void removeMedication(int position) {
+        if (position >= 0 && position < medicationList.size()) {
+            medicationList.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
 
     @NonNull
     @Override
@@ -57,20 +88,25 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
 
     @Override
     public void onBindViewHolder(@NonNull MedicationViewHolder holder, int position) {
-        // Binding hardcoded values from the arrays
-        holder.medicineName.setText(medicineNames[position]);
-        holder.medicineDetails.setText(medicineDetails[position]);
-        holder.medicineLocation.setText(medicineLocations[position]);
-        holder.medicineDosage.setText(medicineDosages[position]);
-        holder.pillsLeft.setText(pillsLeft[position]);
+        Medication medication = medicationList.get(position);
+        holder.medicineName.setText(medication.getName());
+        holder.medicineDetails.setText(medication.getDetails());
+        holder.medicineLocation.setText(medication.getLocation());
+        holder.medicineDosage.setText(medication.getDosage());
+        holder.pillsLeft.setText(medication.getPillsLeft());
+
         // Set a default icon for demonstration; replace with actual resource if needed
         holder.medicineIcon.setImageResource(android.R.drawable.ic_menu_gallery);
+
+        // Set click listener for item
+        holder.itemView.setOnClickListener(v -> {
+            onMedicationClickListener.onMedicationClick(medication.getName(), medication.getDetails(), medication.getLocation(), medication.getDosage(), medication.pillsLeft);
+        });
     }
 
     @Override
     public int getItemCount() {
-        // Number of hardcoded items
-        return medicineNames.length;
+        return medicationList.size();
     }
 
     static class MedicationViewHolder extends RecyclerView.ViewHolder {
@@ -91,6 +127,48 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
             medicineIcon = itemView.findViewById(R.id.medicineIcon);
         }
     }
+
+    // Define the listener interface
+    public interface OnMedicationClickListener {
+//        void onMedicationClick(String name, String details);
+
+        void onMedicationClick(String name, String details, String location, String dosage, String pillsLeft);
+    }
+
+    // Medication class to hold data
+    public static class Medication {
+        private String name;
+        private String details;
+        private String location;
+        private String dosage;
+        private String pillsLeft;
+
+        public Medication(String name, String details, String location, String dosage, String pillsLeft) {
+            this.name = name;
+            this.details = details;
+            this.location = location;
+            this.dosage = dosage;
+            this.pillsLeft = pillsLeft;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getDetails() {
+            return details;
+        }
+
+        public String getLocation() {
+            return location;
+        }
+
+        public String getDosage() {
+            return dosage;
+        }
+
+        public String getPillsLeft() {
+            return pillsLeft;
+        }
+    }
 }
-
-
