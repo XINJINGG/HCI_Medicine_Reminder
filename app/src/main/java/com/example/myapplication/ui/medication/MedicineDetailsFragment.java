@@ -21,6 +21,8 @@ import androidx.navigation.Navigation;
 import androidx.appcompat.app.AlertDialog;
 import com.example.myapplication.R;
 
+import java.util.Objects;
+
 public class MedicineDetailsFragment extends Fragment {
 
     private ImageView medDetailsImg;
@@ -59,13 +61,62 @@ public class MedicineDetailsFragment extends Fragment {
         // Retrieve arguments
         if (getArguments() != null) {
             String medicineName = getArguments().getString("medicineName");
-            String medicinePurpose = getArguments().getString("medicinePurpose");
-            String medicineLocation = getArguments().getString("medicineSource");
-            int dosage = getArguments().getInt("medicineDosage", 0);
-            int stockCount = getArguments().getInt("medicineStockCount", 100);
-            int pillsLeft = getArguments().getInt("medicinePillsLeft", 0);
+            String medicinePurpose = getArguments().getString("medicinePurpose", "");
+            if (Objects.equals(medicinePurpose, "")) {
+               medicinePurpose = getArguments().getString("medicineDetails", "");
+            }
+
+            String medicineLocation = getArguments().getString("medicineSource", "");
+            if (Objects.equals(medicineLocation, "")) {
+                medicineLocation = getArguments().getString("medicineLocations", "");
+            }
+            // Check if medicineLocation contains a colon and extract the value after it
+            if (medicineLocation.contains(":")) {
+                medicineLocation = medicineLocation.split(":", 2)[1].trim(); // Get the text after the first colon and trim any whitespace
+            }
+
+
+            String dosage = getArguments().getString("medicineDosage", "0");
+            if (Objects.equals(dosage, "0")) {
+                dosage = getArguments().getString("medicineDosages", "0");
+            }
+
+            String stockCount = getArguments().getString("pillsLeft", "100");
+            // Check if stockCount contains "out of" and extract the value after it
+            if (stockCount.contains(" out of ")) {
+                stockCount = stockCount.split("out of ")[1].trim(); // Get the value after "out of"
+                // Remove the last two words after trimming
+                String[] words = stockCount.split(" ");
+                if (words.length > 2) {
+                    StringBuilder newStockCount = new StringBuilder();
+                    for (int i = 0; i < words.length - 2; i++) {
+                        newStockCount.append(words[i]).append(" ");
+                    }
+                    stockCount = newStockCount.toString().trim(); // Trim to remove any trailing space
+                }
+            }
+            medDetailsStockCount.setText("Stock Count: " + stockCount);
+
+
             int medicineImage = getArguments().getInt("medicineImageResId", -1);
+
             int progressValue = getArguments().getInt("medicinePercentage", 0);
+
+            String pillsLeft = getArguments().getString("pillsLeft", "0");
+            // Check if pillsLeft contains "out of" and extract the number before it
+            if (pillsLeft.contains(" out of ")) {
+                pillsLeft = pillsLeft.split(" out of")[0].trim(); // Get the value before "out of"
+            }
+            // If pillsLeft is still "0", set it to the progressValue instead
+            if (Objects.equals(pillsLeft, "0")) {
+                pillsLeft = String.valueOf(progressValue);
+            }
+
+            medDetailsPillsLeft.setText("Pills Left: " + pillsLeft);
+
+
+
+
 
             // Set data to views
             if (medicineImage != -1) {
@@ -79,11 +130,12 @@ public class MedicineDetailsFragment extends Fragment {
             medDetailsLocation.setText("Obtained from: " + medicineLocation);
             medDetailsDosage.setText("Dosage: " + dosage + " mg");
             medDetailsStockCount.setText("Stock Count: " + stockCount);
-            medDetailsPillsLeft.setText("Pills Left: " + progressValue);
+            medDetailsPillsLeft.setText("Pills Left: " + pillsLeft);
 
             // Set progress bar and percentage text
             medDetailsProgressBar.setProgress(progressValue);
             medDetailsProgressPercentage.setText(progressValue + "%");
+
 
             // Change progress color based on percentage
             if (progressValue < 30) {

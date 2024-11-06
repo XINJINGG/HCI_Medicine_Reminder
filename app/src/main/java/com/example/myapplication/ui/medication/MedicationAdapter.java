@@ -43,6 +43,7 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
             "Dosage: 1 tablet", "Dosage: 1 tablet"
     };
 
+
     private String[] pillsLeft = {
             "5 out of 10 pills left", "7 out of 20 pills left", "10 out of 30 pills left",
             "3 out of 15 pills left", "6 out of 12 pills left",
@@ -99,7 +100,7 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
 
         // Set click listener for item
         holder.itemView.setOnClickListener(v -> {
-            onMedicationClickListener.onMedicationClick(medication.getName(), medication.getDetails());
+            onMedicationClickListener.onMedicationClick(medication.getName(), medication.getDetails(), medication.getLocation(), medication.getDosage(), medication.pillsLeft);
         });
     }
 
@@ -129,7 +130,9 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
 
     // Define the listener interface
     public interface OnMedicationClickListener {
-        void onMedicationClick(String name, String details);
+//        void onMedicationClick(String name, String details);
+
+        void onMedicationClick(String name, String details, String location, String dosage, String pillsLeft);
     }
 
     // Medication class to hold data
