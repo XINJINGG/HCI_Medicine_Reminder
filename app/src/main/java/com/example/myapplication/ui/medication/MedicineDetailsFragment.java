@@ -57,10 +57,11 @@ public class MedicineDetailsFragment extends Fragment {
             String medicinePurpose = getArguments().getString("medicinePurpose");
             String medicineLocation = getArguments().getString("medicineSource");
             int dosage = getArguments().getInt("medicineDosage", 0); // Ensure you get dosage correctly
-            int stockCount = getArguments().getInt("medicineStockCount", 0); // Ensure you get stock count correctly
+            int stockCount = getArguments().getInt("medicineStockCount", 100); // Ensure you get stock count correctly
             int pillsLeft = getArguments().getInt("medicinePillsLeft", 0); // New variable for pills left
             int medicineImage = getArguments().getInt("medicineImageResId", -1);
             int progressValue = getArguments().getInt("medicinePercentage", 0); // Get the percentage value
+
 
             // Set data to views
             medDetailsImg.setImageResource(medicineImage); // Set image
@@ -69,7 +70,7 @@ public class MedicineDetailsFragment extends Fragment {
             medDetailsLocation.setText("Obtained from: " + medicineLocation);
             medDetailsDosage.setText("Dosage: " + dosage + " mg"); // Assuming dosage is in mg
             medDetailsStockCount.setText("Stock Count: " + stockCount);
-            medDetailsPillsLeft.setText("Pills Left: " + pillsLeft); // Display pills left
+            medDetailsPillsLeft.setText("Pills Left: " + progressValue); // Display pills left
 
             // Set progress bar and percentage text
             medDetailsProgressBar.setProgress(progressValue);
@@ -85,17 +86,29 @@ public class MedicineDetailsFragment extends Fragment {
             // Set up the click listener for the edit button
             editButton.setOnClickListener(v -> {
                 // Create a bundle to pass data to the edit fragment
-//                Bundle bundle = new Bundle();
-//                bundle.putString("medicineName", medDetailsName.getText().toString());
-//                bundle.putString("medicinePurpose", medDetailsDescription.getText().toString());
-//                bundle.putString("medicineLocation", medDetailsLocation.getText().toString());
-//                bundle.putInt("medicineDosage", Integer.parseInt(medDetailsDosage.getText().toString().split(" ")[1])); // Extract dosage value
-//                bundle.putInt("medicineStockCount", Integer.parseInt(medDetailsStockCount.getText().toString().split(": ")[1]));
-//                bundle.putInt("medicinePillsLeft", Integer.parseInt(medDetailsPillsLeft.getText().toString().split(": ")[1]));
-//                bundle.putInt("medicineImageResId", medicineImage); // Pass the image resource ID
+                Bundle bundle = new Bundle();
+
+                // Extract values after the colon
+                String nameValue = medDetailsName.getText().toString();
+                String purposeValue = medDetailsDescription.getText().toString().split(": ")[1]; // Gets text after "Description:"
+                String locationValue = medDetailsLocation.getText().toString().split(": ")[1];   // Gets text after "Obtained from:"
+                int dosageValue = Integer.parseInt(medDetailsDosage.getText().toString().split(" ")[1]);
+                int stockCountValue = Integer.parseInt(medDetailsStockCount.getText().toString().split(": ")[1]);
+                int pillsLeftValue = Integer.parseInt(medDetailsPillsLeft.getText().toString().split(": ")[1]);
+
+                // Populate bundle with cleaned values
+                bundle.putString("medicineName", nameValue);
+                bundle.putString("medicinePurpose", purposeValue);
+                bundle.putString("medicineLocation", locationValue);
+                bundle.putInt("medicineDosage", dosageValue);
+                bundle.putInt("medicineStockCount", stockCountValue);
+                bundle.putInt("medicinePillsLeft", pillsLeftValue);
+                bundle.putInt("medicineImageResId", medicineImage);
+
                 // Navigate to the edit fragment
-                Navigation.findNavController(view).navigate(R.id.action_medicineDetailsFragment_to_editMedicationDetailsFragment);
+                Navigation.findNavController(view).navigate(R.id.action_medicineDetailsFragment_to_editMedicationDetailsFragment, bundle);
             });
+
         }
 
 
