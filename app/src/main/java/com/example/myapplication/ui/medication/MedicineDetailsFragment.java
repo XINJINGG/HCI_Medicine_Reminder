@@ -5,6 +5,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,9 @@ public class MedicineDetailsFragment extends Fragment {
 
         // Retrieve arguments
         if (getArguments() != null) {
+
             String medicineName = getArguments().getString("medicineName");
+
             String medicinePurpose = getArguments().getString("medicinePurpose", "");
             if (Objects.equals(medicinePurpose, "")) {
                medicinePurpose = getArguments().getString("medicineDetails", "");
@@ -75,10 +78,33 @@ public class MedicineDetailsFragment extends Fragment {
                 medicineLocation = medicineLocation.split(":", 2)[1].trim(); // Get the text after the first colon and trim any whitespace
             }
 
-            String dosage = getArguments().getString("medicineDosage", "0");
+            String dosage = getArguments().getString("medicineDetails", "500mg");
             if (Objects.equals(dosage, "0")) {
-                dosage = getArguments().getString("medicineDosages", "0");
+                dosage = getArguments().getString("medicineDetails", "500mg");
             }
+            // Extract the number part before "mg"
+            if (dosage.contains("mg")) {
+                dosage = dosage.split("mg")[0]; // Get the part before the space (i.e., the number)
+            }
+            medDetailsDosage.setText("Dosage: " + dosage + " mg"); // Set the dosage without any extra space or characters
+
+
+            String medicineFrequency = getArguments().getString("medicineDetails", "Once a day");
+            // Check if the string contains the bullet character
+            if (medicineFrequency != null && medicineFrequency.contains("\u2022")) {
+                int bulletIndex = medicineFrequency.indexOf("\u2022");
+
+                // If the bullet is found, get the substring after it
+                if (bulletIndex != -1) {
+                    medicineFrequency = medicineFrequency.substring(bulletIndex + 1).trim();
+                }
+            }
+            medDetailsFrequency.setText(medicineFrequency);
+
+
+            medDetailsFrequency.setText(medicineFrequency);
+
+
 
             String stockCount = getArguments().getString("pillsLeft", "100");
             // Check if stockCount contains "out of" and extract the value after it
@@ -152,6 +178,7 @@ public class MedicineDetailsFragment extends Fragment {
             medDetailsDescription.setText("Description: " + medicinePurpose);
             medDetailsLocation.setText("Obtained from: " + medicineLocation);
             medDetailsDosage.setText("Dosage: " + dosage + " mg");
+            medDetailsFrequency.setText("Frequency: " + medicineFrequency);
             medDetailsStockCount.setText("Stock Count: " + stockCount);
             medDetailsPillsLeft.setText("Pills Left: " + pillsLeft);
 
