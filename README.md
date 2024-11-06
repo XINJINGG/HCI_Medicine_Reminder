@@ -70,8 +70,12 @@ You can run the app on an emulator or a physical Android device.
   1. Enable **Developer Options** on your Android device.
   2. Turn on **Wireless Debugging**.
   3. Click on **Pair device with QR code and scan the QR Code**
-  4. Make sure your device and your computer is connected on the same wifi network (it is possible that it will not work over school wifi, if so please use your personal hotspot)
-  5. Select your device in Android Studio.
+  4. Make sure your device and your computer is connected on the **same wifi network**
+        - If the connection is taking too long, try using mobile hotspot as school wi-fi might not work
+  5. <img width="346" alt="image" src="https://github.com/user-attachments/assets/875fec61-6576-41f3-ae4b-a45fc205f46e">
+
+    Select your device in Android Studio.
+
   6. Run the application.
 
 ### 5. Build and Run the App
@@ -81,7 +85,7 @@ You can run the app on an emulator or a physical Android device.
 
 ---
 
-## How to Use the App
+## Navigating around the App
 
 1. **Medication List**: The medication page displays a list of medications. Tap on any item to view its details.
 2. **Alarms**: The alarm page shows and allows user to add and view their alarms
