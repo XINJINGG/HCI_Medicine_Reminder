@@ -22,112 +22,113 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/med_details_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/med_details_img" />
+        <TextView
+            android:id="@+id/med_details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/med_details_img" />
 
         <TextView
-        android:id="@+id/med_details_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Description: "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/med_details_img"
-        app:layout_constraintTop_toBottomOf="@+id/med_details_name" />
+            android:id="@+id/med_details_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Description: "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/med_details_img"
+            app:layout_constraintTop_toBottomOf="@+id/med_details_name" />
 
-    <TextView
-        android:id="@+id/med_details_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Obtainted from: "
-        app:layout_constraintEnd_toEndOf="@+id/med_details_description"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/med_details_description"
-        app:layout_constraintTop_toBottomOf="@+id/med_details_description" />
+        <TextView
+            android:id="@+id/med_details_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Obtainted from: "
+            app:layout_constraintEnd_toEndOf="@+id/med_details_description"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/med_details_description"
+            app:layout_constraintTop_toBottomOf="@+id/med_details_description" />
 
-    <TextView
-        android:id="@+id/med_details_dosage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Dosage: 0"
-        app:layout_constraintEnd_toEndOf="@+id/med_details_location"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/med_details_location"
-        app:layout_constraintTop_toBottomOf="@+id/med_details_location" />
+        <TextView
+            android:id="@+id/med_details_dosage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Dosage: 0"
+            app:layout_constraintEnd_toEndOf="@+id/med_details_location"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/med_details_location"
+            app:layout_constraintTop_toBottomOf="@+id/med_details_location" />
 
-    <TextView
-        android:id="@+id/med_details_frequency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Frequency: 0"
-        app:layout_constraintEnd_toEndOf="@+id/med_details_dosage"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/med_details_dosage"
-        app:layout_constraintTop_toBottomOf="@+id/med_details_dosage" />
+        <TextView
+            android:id="@+id/med_details_frequency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Frequency: 0"
+            app:layout_constraintEnd_toEndOf="@+id/med_details_dosage"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/med_details_dosage"
+            app:layout_constraintTop_toBottomOf="@+id/med_details_dosage" />
 
-    <TextView
-        android:id="@+id/med_details_stock_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Stock Count: 0"
-        app:layout_constraintEnd_toEndOf="@+id/med_details_frequency"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/med_details_frequency"
-        app:layout_constraintTop_toBottomOf="@+id/med_details_frequency" />
+        <TextView
+            android:id="@+id/med_details_stock_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Stock Count: 0"
+            app:layout_constraintEnd_toEndOf="@+id/med_details_frequency"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/med_details_frequency"
+            app:layout_constraintTop_toBottomOf="@+id/med_details_frequency" />
 
-    <TextView
-        android:id="@+id/med_details_pills_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Pills left: 0"
-        app:layout_constraintEnd_toEndOf="@+id/med_details_stock_count"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/med_details_stock_count"
-        app:layout_constraintTop_toBottomOf="@+id/med_details_stock_count" />
+        <TextView
+            android:id="@+id/med_details_pills_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Pills left: 0"
+            app:layout_constraintEnd_toEndOf="@+id/med_details_stock_count"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/med_details_stock_count"
+            app:layout_constraintTop_toBottomOf="@+id/med_details_stock_count" />
 
-    <ProgressBar
-        android:id="@+id/med_details_progress_bar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="58dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="8dp"
-        android:max="100"
-        android:progressDrawable="@drawable/custom_progress_bar"
-        android:rotation="0"
-        app:layout_constraintEnd_toEndOf="@+id/med_details_img"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/med_details_img"
-        app:layout_constraintTop_toBottomOf="@+id/med_details_name" />
+        <ProgressBar
+            android:id="@+id/med_details_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="58dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="-8dp"
+            android:max="100"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            android:rotation="0"
+            app:layout_constraintEnd_toEndOf="@+id/med_details_pills_left"
+            app:layout_constraintStart_toStartOf="@+id/med_details_pills_left"
+            app:layout_constraintTop_toBottomOf="@+id/med_details_pills_left" />
 
-    <TextView
-        android:id="@+id/med_details_progress_percentage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0%"
-        app:layout_constraintBottom_toBottomOf="@+id/med_details_progress_bar"
-        app:layout_constraintEnd_toEndOf="@+id/med_details_progress_bar"
-        app:layout_constraintStart_toStartOf="@+id/med_details_progress_bar"
-        app:layout_constraintTop_toTopOf="@+id/med_details_progress_bar" />
+        <TextView
+            android:id="@+id/med_details_progress_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0%"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/med_details_progress_bar"
+            app:layout_constraintEnd_toEndOf="@+id/med_details_progress_bar"
+            app:layout_constraintStart_toStartOf="@+id/med_details_progress_bar"
+            app:layout_constraintTop_toTopOf="@+id/med_details_progress_bar" />
 
         <Button
             android:id="@+id/med_details_edit_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="144dp"
+            android:layout_marginTop="24dp"
             android:text="Edit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.927"
@@ -135,15 +136,15 @@
             app:layout_constraintTop_toBottomOf="@+id/med_details_progress_bar" />
 
         <Button
-        android:id="@+id/med_details_delete_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        app:layout_constraintEnd_toStartOf="@+id/med_details_edit_btn"
-        app:layout_constraintHorizontal_bias="0.919"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/med_details_edit_btn" />
-
+            android:id="@+id/med_details_delete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Delete"
+            app:layout_constraintEnd_toStartOf="@+id/med_details_edit_btn"
+            app:layout_constraintHorizontal_bias="0.919"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/med_details_progress_bar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -23,10 +23,16 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
     };
 
     private String[] medicineDetails = {
-            "500mg • Once a day", "400mg • Twice a day", "500mg • Every 8 hours",
-            "250mg • Three times a day", "10mg • Once a day",
-            "500mg • Twice a day", "20mg • Once a day", "10mg • Once a day",
-            "50mcg • Once a day", "20mg • Once a day"
+            "For relieving mild pain and inflammation",
+            "For my pain relief and to bring down inflammation",
+            "When I need quick relief from pain or a fever but don’t want something that messes with my stomach",
+            "If I’ve got a bacterial infection",
+            "Manage my blood pressure",
+            "Daily go-to for helping manage my blood sugar levels",
+            "Keep my cholesterol in check.",
+            "This one helps manage my cholesterol levels",
+            "Replace the thyroid hormone",
+            "When heartburn or acid reflux kicks in"
     };
 
     private String[] medicineLocations = {
@@ -41,6 +47,13 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
             "Dosage: 3 tablets", "Dosage: 1 tablet",
             "Dosage: 2 tablets", "Dosage: 1 tablet", "Dosage: 2 tablets",
             "Dosage: 1 tablet", "Dosage: 1 tablet"
+    };
+
+    private String[] Frequency = {
+            "2 times a day", "Once a day", "2 times a day",
+            "3 times a day", "3 times a day",
+            "3 times a day", "3 times a day", "3 times a day",
+            "3 times a day", "3 times a day"
     };
 
 

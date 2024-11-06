@@ -78,9 +78,9 @@ public class MedicineDetailsFragment extends Fragment {
                 medicineLocation = medicineLocation.split(":", 2)[1].trim(); // Get the text after the first colon and trim any whitespace
             }
 
-            String dosage = getArguments().getString("medicineDetails", "500mg");
+            String dosage = getArguments().getString("medicineDosages", "500mg");
             if (Objects.equals(dosage, "0")) {
-                dosage = getArguments().getString("medicineDetails", "500mg");
+                dosage = getArguments().getString("medicineDosages", "500mg");
             }
             // Extract the number part before "mg"
             if (dosage.contains("mg")) {
@@ -89,7 +89,7 @@ public class MedicineDetailsFragment extends Fragment {
             medDetailsDosage.setText("Dosage: " + dosage + " mg"); // Set the dosage without any extra space or characters
 
 
-            String medicineFrequency = getArguments().getString("medicineDetails", "Once a day");
+            String medicineFrequency = getArguments().getString("Frequency", "Once a day");
             // Check if the string contains the bullet character
             if (medicineFrequency != null && medicineFrequency.contains("\u2022")) {
                 int bulletIndex = medicineFrequency.indexOf("\u2022");
