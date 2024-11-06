@@ -3,6 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_medication">Medication</string>
     <string name="title_medication_details">Medication Details</string>
+    <string name="title_edit_medication">Edit Medication</string>
     <string name="title_alarms">Alarms</string>
     <string name="title_rewards">Rewards</string>
     <string name="title_profile">Profile</string>

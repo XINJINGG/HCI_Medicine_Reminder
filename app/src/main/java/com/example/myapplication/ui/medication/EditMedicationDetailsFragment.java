@@ -1,66 +1,84 @@
 package com.example.myapplication.ui.medication;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.myapplication.R;
+import com.google.android.material.textfield.TextInputLayout;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EditMedicationDetailsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class EditMedicationDetailsFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private EditText editMedName, editMedPurpose, editMedLocation, editMedDosage, editMedStockCount, editMedPillsLeft;
+    private ImageView editMedImage;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public EditMedicationDetailsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EditMedicationDetailsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EditMedicationDetailsFragment newInstance(String param1, String param2) {
-        EditMedicationDetailsFragment fragment = new EditMedicationDetailsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_edit_medication_details, container, false);
+
+        // Initialize the TextInputLayouts and get their EditTexts
+        TextInputLayout editMedNameLayout = view.findViewById(R.id.edit_med_name_layout);
+        TextInputLayout editMedPurposeLayout = view.findViewById(R.id.edit_med_description_layout);
+        TextInputLayout editMedLocationLayout = view.findViewById(R.id.edit_med_location_layout);
+        TextInputLayout editMedDosageLayout = view.findViewById(R.id.edit_med_dosage_layout);
+        TextInputLayout editMedStockCountLayout = view.findViewById(R.id.edit_med_stock_layout);
+        TextInputLayout editMedPillsLeftLayout = view.findViewById(R.id.edit_med_pills_left_layout);
+
+        editMedName = editMedNameLayout.getEditText();
+        editMedPurpose = editMedPurposeLayout.getEditText();
+        editMedLocation = editMedLocationLayout.getEditText();
+        editMedDosage = editMedDosageLayout.getEditText();
+        editMedStockCount = editMedStockCountLayout.getEditText();
+        editMedPillsLeft = editMedPillsLeftLayout.getEditText();
+        editMedImage = view.findViewById(R.id.edit_med_img);
+
+        // Retrieve and set the arguments
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            String medicineName = getArguments().getString("medicineName");
+            String medicinePurpose = getArguments().getString("medicinePurpose");
+            String medicineLocation = getArguments().getString("medicineLocation");
+            int dosage = getArguments().getInt("medicineDosage", 0);
+            int stockCount = getArguments().getInt("medicineStockCount", 100);
+            int pillsLeft = getArguments().getInt("medicinePillsLeft", 0);
+            int medicineImageResId = getArguments().getInt("medicineImageResId", -1);
+
+            // Set the data to the fields
+            if (editMedName != null) editMedName.setText(medicineName);
+            if (editMedPurpose != null) editMedPurpose.setText(medicinePurpose);
+            if (editMedLocation != null) editMedLocation.setText(medicineLocation);
+            if (editMedDosage != null) editMedDosage.setText(String.valueOf(dosage));
+            if (editMedStockCount != null) editMedStockCount.setText(String.valueOf(stockCount));
+            if (editMedPillsLeft != null) editMedPillsLeft.setText(String.valueOf(pillsLeft));
+            editMedImage.setImageResource(medicineImageResId); // Set the image resource
         }
+
+        // Find the Save button and set an OnClickListener
+        Button saveButton = view.findViewById(R.id.edit_med_saveBtn); // Assuming you have a save button in your layout
+        saveButton.setOnClickListener(v -> showConfirmationDialog(view));
+
+        return view;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_medication_details, container, false);
+    private void showConfirmationDialog(View view) {
+        // Create an AlertDialog to show a confirmation message
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Save Changes")
+                .setMessage("The medication details have been successfully changed.")
+                .setPositiveButton("OK", (dialog, which) -> {
+                    dialog.dismiss();
+                    // Navigate back to the previous page
+                    Navigation.findNavController(view).popBackStack();
+                })
+                .show();
     }
 }
