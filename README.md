@@ -7,7 +7,7 @@ This is a Medication Reminder Android application designed to assist elderly use
 - **Alarms**: Set alarms for each medication to remind elderly to eat their medication
 - **Medication Details**: View detailed information about a selected medication.
 - **Add/Edit Medications**: Add new medications or edit existing ones.
-- **Achievement System**: Helps to track and motivate users with streaks and achievements to show off to their peers
+- **Achievement System**: Helps to track and motivate users with streaks and achievement badges to show off to their peers
   
 ---
 
@@ -91,6 +91,6 @@ You can run the app on an emulator or a physical Android device.
 2. **Alarms**: The alarm page shows and allows user to add and view their alarms
 3. **Home**: The home page display all upcoming mediction for the day as well as the missed medication for the day
 4. **Rewards**: The rewards page shows them how consistently users have taken their medication for as well as badges they can earn
-5. **Profile**: The profile page displays the user's information
+5. **Profile**: The profile page displays the user's information and earned badges
 
 ---
