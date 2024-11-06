@@ -59,8 +59,10 @@ You can run the app on an emulator or a physical Android device.
   5. Scroll down and find **Pixel 3a**, and click Next
   6. Click on **Other Images** and look for **Andriod 14.0("UpsideDownCake") API Level 34**
   7. <img width="558" alt="image" src="https://github.com/user-attachments/assets/9e085f8a-f201-424d-9edd-870d40b5803d">
+      
       Double check with the image to make sure the emulator set up is the same
   8. <img width="342" alt="image" src="https://github.com/user-attachments/assets/6dab55c7-9449-46db-951c-b941132073c0">
+      
       Select the correct newly created emulator
   9. Start the project.
   
