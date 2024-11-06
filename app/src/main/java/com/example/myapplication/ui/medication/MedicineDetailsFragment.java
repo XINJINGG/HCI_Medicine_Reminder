@@ -75,7 +75,6 @@ public class MedicineDetailsFragment extends Fragment {
                 medicineLocation = medicineLocation.split(":", 2)[1].trim(); // Get the text after the first colon and trim any whitespace
             }
 
-
             String dosage = getArguments().getString("medicineDosage", "0");
             if (Objects.equals(dosage, "0")) {
                 dosage = getArguments().getString("medicineDosages", "0");
@@ -114,7 +113,31 @@ public class MedicineDetailsFragment extends Fragment {
 
             medDetailsPillsLeft.setText("Pills Left: " + pillsLeft);
 
+            try {
+                // Parse pillsLeft and stockCount
+                int pillsLeftValue = Integer.parseInt(pillsLeft);
+                int stockCountValue = Integer.parseInt(stockCount);
 
+                // Calculate progress if it's 0
+                if (progressValue == 0 && stockCountValue > 0) {
+                    progressValue = (int) ((double) pillsLeftValue / stockCountValue * 100);
+                }
+
+                // Set progress bar and percentage text
+                medDetailsProgressBar.setProgress(progressValue);
+                medDetailsProgressPercentage.setText(progressValue + "%");
+
+                // Change progress color based on percentage
+                if (progressValue < 30) {
+                    medDetailsProgressBar.setIndeterminateTintList(ColorStateList.valueOf(RED_COLOR));
+                } else {
+                    medDetailsProgressBar.getProgressDrawable().setColorFilter(GREEN_COLOR, PorterDuff.Mode.SRC_IN);
+                }
+
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                // Handle any error if parsing fails (optional)
+            }
 
 
 
