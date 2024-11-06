@@ -68,7 +68,12 @@ public class MedicineDetailsFragment extends Fragment {
             int progressValue = getArguments().getInt("medicinePercentage", 0);
 
             // Set data to views
-            medDetailsImg.setImageResource(medicineImage);
+            if (medicineImage != -1) {
+                medDetailsImg.setImageResource(medicineImage);
+            } else {
+                // Set a default image if medicineImage is invalid
+                medDetailsImg.setImageResource(android.R.drawable.ic_menu_gallery);
+            }
             medDetailsName.setText(medicineName);
             medDetailsDescription.setText("Description: " + medicinePurpose);
             medDetailsLocation.setText("Obtained from: " + medicineLocation);
