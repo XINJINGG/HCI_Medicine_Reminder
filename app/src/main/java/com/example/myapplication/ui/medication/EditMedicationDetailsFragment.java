@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class EditMedicationDetailsFragment extends Fragment {
 
-    private EditText editMedName, editMedPurpose, editMedLocation, editMedDosage, editMedStockCount, editMedPillsLeft;
+    private EditText editMedName, editMedPurpose, editMedLocation, editMedDosage, editMedStockCount, editMedPillsLeft, editMedFrequency;
     private ImageView editMedImage;
 
     @Nullable
@@ -33,6 +33,7 @@ public class EditMedicationDetailsFragment extends Fragment {
         TextInputLayout editMedDosageLayout = view.findViewById(R.id.edit_med_dosage_layout);
         TextInputLayout editMedStockCountLayout = view.findViewById(R.id.edit_med_stock_layout);
         TextInputLayout editMedPillsLeftLayout = view.findViewById(R.id.edit_med_pills_left_layout);
+        TextInputLayout editMedFrequencyLayout = view.findViewById(R.id.edit_med_frequency_layout); // Frequency input field
 
         editMedName = editMedNameLayout.getEditText();
         editMedPurpose = editMedPurposeLayout.getEditText();
@@ -40,6 +41,7 @@ public class EditMedicationDetailsFragment extends Fragment {
         editMedDosage = editMedDosageLayout.getEditText();
         editMedStockCount = editMedStockCountLayout.getEditText();
         editMedPillsLeft = editMedPillsLeftLayout.getEditText();
+        editMedFrequency = editMedFrequencyLayout.getEditText(); // Frequency EditText
         editMedImage = view.findViewById(R.id.edit_med_img);
 
         // Retrieve and set the arguments
@@ -48,9 +50,14 @@ public class EditMedicationDetailsFragment extends Fragment {
             String medicinePurpose = getArguments().getString("medicinePurpose");
             String medicineLocation = getArguments().getString("medicineLocation");
             int dosage = getArguments().getInt("medicineDosage", 0);
+            String frequency = getArguments().getString("medicineFrequency", "Once a day"); // Retrieve frequency from Bundle
             int stockCount = getArguments().getInt("medicineStockCount", 100);
             int pillsLeft = getArguments().getInt("medicinePillsLeft", 0);
             int medicineImageResId = getArguments().getInt("medicineImageResId", -1);
+            if (medicineImageResId == -1) {
+                // Set a default image if the passed resource ID is invalid
+                medicineImageResId = android.R.drawable.ic_menu_gallery;  // Set an appropriate default image resource
+            }
 
             // Set the data to the fields
             if (editMedName != null) editMedName.setText(medicineName);
@@ -59,11 +66,12 @@ public class EditMedicationDetailsFragment extends Fragment {
             if (editMedDosage != null) editMedDosage.setText(String.valueOf(dosage));
             if (editMedStockCount != null) editMedStockCount.setText(String.valueOf(stockCount));
             if (editMedPillsLeft != null) editMedPillsLeft.setText(String.valueOf(pillsLeft));
+            if (editMedFrequency != null) editMedFrequency.setText(String.valueOf(frequency)); // Set frequency
             editMedImage.setImageResource(medicineImageResId); // Set the image resource
         }
 
         // Find the Save button and set an OnClickListener
-        Button saveButton = view.findViewById(R.id.edit_med_saveBtn); // Assuming you have a save button in your layout
+        Button saveButton = view.findViewById(R.id.edit_med_saveBtn);
         saveButton.setOnClickListener(v -> showConfirmationDialog(view));
 
         return view;

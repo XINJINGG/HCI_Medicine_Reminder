@@ -124,6 +124,12 @@ public class MedicineDetailsFragment extends Fragment {
 
 
             int medicineImage = getArguments().getInt("medicineImageResId", -1);
+            if (medicineImage != -1) {
+                medDetailsImg.setImageResource(medicineImage);
+            } else {
+                medDetailsImg.setImageResource(android.R.drawable.ic_menu_gallery); // Use a default image
+            }
+
 
             int progressValue = getArguments().getInt("medicinePercentage", 0);
 
@@ -165,15 +171,7 @@ public class MedicineDetailsFragment extends Fragment {
                 // Handle any error if parsing fails (optional)
             }
 
-
-
             // Set data to views
-            if (medicineImage != -1) {
-                medDetailsImg.setImageResource(medicineImage);
-            } else {
-                // Set a default image if medicineImage is invalid
-                medDetailsImg.setImageResource(android.R.drawable.ic_menu_gallery);
-            }
             medDetailsName.setText(medicineName);
             medDetailsDescription.setText("Description: " + medicinePurpose);
             medDetailsLocation.setText("Obtained from: " + medicineLocation);
@@ -201,16 +199,18 @@ public class MedicineDetailsFragment extends Fragment {
                 String purposeValue = medDetailsDescription.getText().toString().split(": ")[1];
                 String locationValue = medDetailsLocation.getText().toString().split(": ")[1];
                 int dosageValue = Integer.parseInt(medDetailsDosage.getText().toString().split(" ")[1]);
+                String frequency = medDetailsFrequency.getText().toString().split(": ")[1];
                 int stockCountValue = Integer.parseInt(medDetailsStockCount.getText().toString().split(": ")[1]);
                 int pillsLeftValue = Integer.parseInt(medDetailsPillsLeft.getText().toString().split(": ")[1]);
 
+                bundle.putInt("medicineImageResId", medicineImage);
                 bundle.putString("medicineName", nameValue);
                 bundle.putString("medicinePurpose", purposeValue);
                 bundle.putString("medicineLocation", locationValue);
                 bundle.putInt("medicineDosage", dosageValue);
+                bundle.putString("medicineFrequency",frequency);
                 bundle.putInt("medicineStockCount", stockCountValue);
                 bundle.putInt("medicinePillsLeft", pillsLeftValue);
-                bundle.putInt("medicineImageResId", medicineImage);
 
                 Navigation.findNavController(view).navigate(R.id.action_medicineDetailsFragment_to_editMedicationDetailsFragment, bundle);
             });
