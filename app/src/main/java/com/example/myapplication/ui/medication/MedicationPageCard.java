@@ -1,8 +1,10 @@
 package com.example.myapplication.ui.medication;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,13 @@ import com.example.myapplication.R;
 public class MedicationPageCard extends RecyclerView.Adapter<MedicationPageCard.MedicationViewHolder> {
 
     // Sample data arrays
+    private int[] medicineImages = {
+            R.drawable.aspirin, R.drawable.ibuprofen, R.drawable.paracetamol,
+            R.drawable.amoxicillin, R.drawable.lisinopril,
+            R.drawable.metformin, R.drawable.simvastatin, R.drawable.atorvastatin,
+            R.drawable.levothyroxine, R.drawable.omeprazole
+    };
+    
     private String[] medicineNames = {
             "Aspirin", "Ibuprofen", "Paracetamol", "Amoxicillin", "Lisinopril",
             "Metformin", "Simvastatin", "Atorvastatin", "Levothyroxine", "Omeprazole"
@@ -43,9 +52,13 @@ public class MedicationPageCard extends RecyclerView.Adapter<MedicationPageCard.
     @Override
     public void onBindViewHolder(@NonNull MedicationViewHolder holder, int position) {
         // Binding hardcoded values from the arrays
+        Log.d("MedicationAdapter", "Setting image resource: " + medicineImages[position]);
+
+        holder.medicineImage.setImageResource(medicineImages[position]);
         holder.medicineName.setText(medicineNames[position]);
         holder.medicineDetails.setText(medicineDetails[position]);
         holder.pillsLeft.setText(pillsLeft[position]);
+
     }
 
     @Override
@@ -55,12 +68,15 @@ public class MedicationPageCard extends RecyclerView.Adapter<MedicationPageCard.
     }
 
     static class MedicationViewHolder extends RecyclerView.ViewHolder {
+
         TextView medicineName;
         TextView medicineDetails;
-        TextView pillsLeft; // New TextView for pills left
+        TextView pillsLeft;
+        ImageView medicineImage;
 
         MedicationViewHolder(View itemView) {
             super(itemView);
+            medicineImage = itemView.findViewById(R.id.medicineIcon);
             medicineName = itemView.findViewById(R.id.medicineName);
             medicineDetails = itemView.findViewById(R.id.medicineDetails);
             pillsLeft = itemView.findViewById(R.id.pillsLeft); // Find the new TextView

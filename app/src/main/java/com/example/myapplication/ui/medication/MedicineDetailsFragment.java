@@ -62,6 +62,7 @@ public class MedicineDetailsFragment extends Fragment {
         // Retrieve arguments
         if (getArguments() != null) {
 
+
             String medicineName = getArguments().getString("medicineName");
 
             String medicinePurpose = getArguments().getString("medicinePurpose", "");
@@ -122,6 +123,7 @@ public class MedicineDetailsFragment extends Fragment {
             }
             medDetailsStockCount.setText("Stock Count: " + stockCount);
 
+//            int medicineImage = getArguments().getInt("medicineImage", android.R.drawable.ic_menu_gallery);
 
             int medicineImage = getArguments().getInt("medicineImageResId", -1);
             if (medicineImage != -1) {

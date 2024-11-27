@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -45,9 +44,10 @@ public class MedicationFragment extends Fragment implements MedicationAdapter.On
     }
 
     @Override
-    public void onMedicationClick(String name, String details, String location, String dosage, String pillsLeft) {
+    public void onMedicationClick(int medicineImage, String name, String details, String location, String dosage, String pillsLeft) {
         // Handle the click: pass the clicked medication's data to the next fragment
         Bundle bundle = new Bundle();
+        bundle.putInt("medicineImageResId", medicineImage);
         bundle.putString("medicineName", name);
         bundle.putString("medicineDetails", details);
         bundle.putString("medicineLocations", location);

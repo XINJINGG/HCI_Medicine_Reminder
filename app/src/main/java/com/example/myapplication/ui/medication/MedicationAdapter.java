@@ -17,6 +17,12 @@ import java.util.List;
 public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.MedicationViewHolder> {
 
     // Sample data arrays
+    private int[] medicineImages = {
+            R.drawable.aspirin, R.drawable.ibuprofen, R.drawable.paracetamol,
+            R.drawable.amoxicillin, R.drawable.lisinopril,
+            R.drawable.metformin, R.drawable.simvastatin, R.drawable.atorvastatin,
+            R.drawable.levothyroxine, R.drawable.omeprazole
+    };
     private String[] medicineNames = {
             "Aspirin", "Ibuprofen", "Paracetamol", "Amoxicillin", "Lisinopril",
             "Metformin", "Simvastatin", "Atorvastatin", "Levothyroxine", "Omeprazole"
@@ -74,6 +80,7 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
         // Initialize with hardcoded data
         for (int i = 0; i < medicineNames.length; i++) {
             medicationList.add(new Medication(
+                    medicineImages[i],
                     medicineNames[i],
                     medicineDetails[i],
                     medicineLocations[i],
@@ -109,11 +116,11 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
         holder.pillsLeft.setText(medication.getPillsLeft());
 
         // Set a default icon for demonstration; replace with actual resource if needed
-        holder.medicineIcon.setImageResource(android.R.drawable.ic_menu_gallery);
+        holder.medicineIcon.setImageResource(medicineImages[position]);
 
         // Set click listener for item
         holder.itemView.setOnClickListener(v -> {
-            onMedicationClickListener.onMedicationClick(medication.getName(), medication.getDetails(), medication.getLocation(), medication.getDosage(), medication.pillsLeft);
+            onMedicationClickListener.onMedicationClick(medication.getMedicineImage(), medication.getName(), medication.getDetails(), medication.getLocation(), medication.getDosage(), medication.pillsLeft);
         });
     }
 
@@ -145,23 +152,31 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
     public interface OnMedicationClickListener {
 //        void onMedicationClick(String name, String details);
 
-        void onMedicationClick(String name, String details, String location, String dosage, String pillsLeft);
+        void onMedicationClick(int medicineImage, String name, String details, String location, String dosage, String pillsLeft);
     }
 
     // Medication class to hold data
     public static class Medication {
+        private int medicineImage;
         private String name;
         private String details;
         private String location;
         private String dosage;
         private String pillsLeft;
 
-        public Medication(String name, String details, String location, String dosage, String pillsLeft) {
+
+
+        public Medication(int medicineImage, String name, String details, String location, String dosage, String pillsLeft) {
+            this.medicineImage = medicineImage;
             this.name = name;
             this.details = details;
             this.location = location;
             this.dosage = dosage;
             this.pillsLeft = pillsLeft;
+        }
+
+        public int getMedicineImage() {
+            return medicineImage;
         }
 
         public String getName() {
