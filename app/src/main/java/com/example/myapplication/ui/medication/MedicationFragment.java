@@ -20,7 +20,6 @@ public class MedicationFragment extends Fragment implements MedicationAdapter.On
 
     private FragmentMedicationBinding binding;
     private MedicationAdapter medicationAdapter;
-    ImageButton medicationTrackerBtn;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -28,12 +27,6 @@ public class MedicationFragment extends Fragment implements MedicationAdapter.On
         binding = FragmentMedicationBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        // Navigate to the medicine tracker fragment
-        medicationTrackerBtn = root.findViewById(R.id.medicationTrackerButton);
-        medicationTrackerBtn.setOnClickListener(v -> {
-            NavHostFragment.findNavController(MedicationFragment.this)
-                    .navigate(R.id.action_navigation_medication_to_navigation_medicationTracker);
-        });
 
         // Setup RecyclerView
         RecyclerView medicationList = binding.medicationList;
