@@ -40,6 +40,24 @@ public class MedicationFragment extends Fragment implements MedicationAdapter.On
                     .navigate(R.id.action_medicationFragment_to_addMedicationFragment);
         });
 
+//        // Add scroll listener to show/hide FAB. This was used during A/B testing where we tested to see if having the button below instead
+//        of always having it in view on the screen would be detrimental to users satisfaction and time taken to find the add medicine page. The shift of the button
+//        was to aim for a less cluttered design. Would a less cluttered design provide more satisfaction?
+//        medicationList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+//                if (!recyclerView.canScrollVertically(1)) {
+//                    addButton.show();
+//                } else {
+//                    addButton.hide();
+//                }
+//            }
+//        });
+//
+//        addButton.hide(); // Hide button by default
+
+
+
         return root;
     }
 

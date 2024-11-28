@@ -306,4 +306,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!--    FOR A/B TESTING: TO ACCESS THE NEW PAGE -->
+    <!--    <Button-->
+    <!--        android:id="@+id/addAlarmButton2"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginEnd="28dp"-->
+    <!--        android:layout_marginBottom="88dp"-->
+    <!--        android:text="Add alarm (test)"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/addAlarmButton"-->
+    <!--        />-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

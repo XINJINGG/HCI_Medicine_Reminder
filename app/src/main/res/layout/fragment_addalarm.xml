@@ -188,15 +188,18 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/reminderDailyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:text="Reminder Daily"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            />
     </LinearLayout>
 
     <!--BUTTONS SECTION-->
     <LinearLayout
+        android:id="@+id/buttonsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="70dp"
@@ -206,7 +209,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
+
+    <Button
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

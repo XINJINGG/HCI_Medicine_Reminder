@@ -35,6 +35,12 @@ public class AlarmsFragment extends Fragment {
     private Button addAlarmBtn;
     private LinearLayout prospanLayout;
     private LinearLayout donepezilLayout;
+    //    -------- VARIABLE FOR TESTING --------
+    //    private TextView donepezilAlarmDateTestV;
+
+    //    -------- ALTERNATE BUTTON FOR TESTING -------
+//    private Button addAlarmBtn2;
+
 
     @Nullable
     @Override
@@ -52,6 +58,19 @@ public class AlarmsFragment extends Fragment {
         addAlarmBtn = rootView.findViewById(R.id.addAlarmButton);
         donepezilLayout = rootView.findViewById(R.id.donepezilLayout);
         prospanLayout = rootView.findViewById(R.id.prospanLayout);
+
+        //        ------------ FOR A/B TESTING -----------
+//        donepezilAlarmDateTestV = rootView.findViewById(R.id.donepezilAlarmDateTestV);
+//        addAlarmBtn2 = rootView.findViewById(R.id.addAlarmButton2);
+
+        //        --------- FOR A/B TESTING ---------
+        // add test alarm timing ui
+//        viewModel.getIsTestVAlarmAdded().observe(getViewLifecycleOwner(), isAdded -> {
+//            if (isAdded) {
+//                donepezilLayoutTestVersion.setVisibility(View.VISIBLE);
+//                donepezilAlarmDateTestV.setText("20 November");
+//            }
+//        });
 
         // get shared view model
         viewModel = new ViewModelProvider(requireActivity()).get(AlarmsViewModel.class);
@@ -104,6 +123,15 @@ public class AlarmsFragment extends Fragment {
                         .navigate(R.id.toAddAlarmFragment);
             }
         });
+
+        //        ----------- FOR A/B TESTING ---------
+//        addAlarmBtn2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                NavHostFragment.findNavController(AlarmsFragment.this)
+//                        .navigate(R.id.toAddAlarmTestFragment);
+//            }
+//        });
 
         // Set up the switch listener
         alarmSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {

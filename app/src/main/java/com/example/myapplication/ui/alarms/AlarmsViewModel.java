@@ -8,11 +8,18 @@ public class AlarmsViewModel extends ViewModel {
     private final MutableLiveData<Boolean> isAlarmTimingDeleted = new MutableLiveData<>(false);
     private final MutableLiveData<Boolean> isAlarmSaved = new MutableLiveData<>(false);
     private final MutableLiveData<Boolean> isAlarmAdded = new MutableLiveData<>(false);
+
+    private final MutableLiveData<Boolean> isTestAlarmAdded = new MutableLiveData<>(false);
+
     private final MutableLiveData<Boolean> isAlarmDeleted = new MutableLiveData<>(false);
+
+    private final MutableLiveData<Long> selectedDate = new MutableLiveData<>();
 
     public LiveData<Boolean> getIsAlarmTimingDeleted() {
         return isAlarmTimingDeleted;
     }
+
+
 
     public void setAlarmTimingDeleted(boolean isDeleted) {
         isAlarmTimingDeleted.setValue(isDeleted);
@@ -38,8 +45,16 @@ public class AlarmsViewModel extends ViewModel {
         return isAlarmAdded;
     }
 
+    public LiveData<Boolean> getIsTestVAlarmAdded() {
+        return isTestAlarmAdded;
+    }
+
     public void setAlarmAdded(boolean isAdded) {
         isAlarmAdded.setValue(isAdded);
+    }
+
+    public void setTestAlarmAdded(boolean isAdded) {
+        isTestAlarmAdded.setValue(isAdded);
     }
 
 }

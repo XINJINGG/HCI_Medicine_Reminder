@@ -1,8 +1,10 @@
 package com.example.myapplication;
 
+import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -75,8 +77,29 @@ public class MainActivity extends AppCompatActivity {
         // Set up action bar and BottomNavigationView
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-    }
+        //showCalendarPermissionDialog();
 
+    }
+    //    ------------ FOR A/B TESTING --------------
+    //    ------------ function for showing 'permission to access calender' popup -------------------
+//        private void showCalendarPermissionDialog() {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//            builder.setTitle("Calendar Permission")
+//                    .setMessage("This app requires calendar permission to access your calendar. Do you want to grant permission?")
+//                    .setPositiveButton("Grant", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            // Action when 'Grant' is clicked
+//                        }
+//                    })
+//                    .setNegativeButton("Deny", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            // Action when 'Deny' is clicked
+//                        }
+//                    })
+//                    .show();
+//        }
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);

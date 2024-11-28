@@ -26,6 +26,19 @@
         <action
             android:id="@+id/toAddAlarmFragment"
             app:destination="@id/navigation_addalarm" />
+        <action
+            android:id="@+id/toAddAlarmTestFragment"
+            app:destination="@id/navigation_addalarmTestVersion" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_addalarmTestVersion"
+        android:name="com.example.myapplication.ui.alarms.AddAlarmsTestVersion"
+        android:label="Add Alarm"
+        tools:layout="@layout/fragment_alarm_test_version">
+        <action
+            android:id="@+id/toAlarmFragment"
+            app:destination="@id/navigation_alarm" />
     </fragment>
 
     <fragment
@@ -56,9 +69,7 @@
         <action
             android:id="@+id/action_medicationFragment_to_addMedicationFragment"
             app:destination="@id/addMedicationFragment" />
-        <action
-            android:id="@+id/action_navigation_medication_to_navigation_medicationTracker"
-            app:destination="@id/navigation_medicationTracker" />
+
         <action
             android:id="@+id/action_navigation_medication_to_medicineDetailsFragment"
             app:destination="@id/medicineDetailsFragment" />
@@ -112,15 +123,7 @@
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@id/navigation_profile" />
 
-    <fragment
-        android:id="@+id/navigation_medicationTracker"
-        android:name="com.example.myapplication.ui.medication.tracker.MedicineTrackerFragment"
-        android:label="MedicationTracker"
-        tools:layout="@layout/fragment_medicine_tracker" >
-        <action
-            android:id="@+id/action_navigation_medicationTracker_to_medicineDetailsFragment"
-            app:destination="@id/medicineDetailsFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/medicineDetailsFragment"
         android:name="com.example.myapplication.ui.medication.MedicineDetailsFragment"
